@@ -57,6 +57,14 @@ namespace Otchetnost {
         #line hidden
         
         
+        #line 13 "..\..\MainWindow.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.StackPanel ChatType;
+        
+        #line default
+        #line hidden
+        
+        
         #line 19 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.StackPanel ChatPanel;
@@ -105,9 +113,9 @@ namespace Otchetnost {
         #line hidden
         
         
-        #line 80 "..\..\MainWindow.xaml"
+        #line 75 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.StackPanel InfoObjectPanel;
+        internal System.Windows.Controls.StackPanel TasksPanel;
         
         #line default
         #line hidden
@@ -155,17 +163,12 @@ namespace Otchetnost {
             this.Control = ((System.Windows.Controls.TabControl)(target));
             return;
             case 3:
-            
-            #line 14 "..\..\MainWindow.xaml"
-            ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.ChatTypeGlobal_Click);
-            
-            #line default
-            #line hidden
+            this.ChatType = ((System.Windows.Controls.StackPanel)(target));
             return;
             case 4:
             
             #line 15 "..\..\MainWindow.xaml"
-            ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.ChatTypeGroup_Click);
+            ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.ChatTypeGlobal_Click);
             
             #line default
             #line hidden
@@ -173,33 +176,41 @@ namespace Otchetnost {
             case 5:
             
             #line 16 "..\..\MainWindow.xaml"
-            ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.ChatTypeDirect_Click);
+            ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.ChatTypeGroup_Click);
             
             #line default
             #line hidden
             return;
             case 6:
-            this.ChatPanel = ((System.Windows.Controls.StackPanel)(target));
-            return;
-            case 7:
-            this.ScrollChat = ((System.Windows.Controls.ScrollViewer)(target));
-            return;
-            case 8:
-            this.Chat = ((System.Windows.Controls.StackPanel)(target));
-            return;
-            case 9:
-            this.TextInputBox = ((System.Windows.Controls.TextBox)(target));
-            return;
-            case 10:
-            this.ChatButton = ((System.Windows.Controls.Button)(target));
             
-            #line 38 "..\..\MainWindow.xaml"
-            this.ChatButton.Click += new System.Windows.RoutedEventHandler(this.Button_Click);
+            #line 17 "..\..\MainWindow.xaml"
+            ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.ChatTypeDirect_Click);
             
             #line default
             #line hidden
             return;
+            case 7:
+            this.ChatPanel = ((System.Windows.Controls.StackPanel)(target));
+            return;
+            case 8:
+            this.ScrollChat = ((System.Windows.Controls.ScrollViewer)(target));
+            return;
+            case 9:
+            this.Chat = ((System.Windows.Controls.StackPanel)(target));
+            return;
+            case 10:
+            this.TextInputBox = ((System.Windows.Controls.TextBox)(target));
+            return;
             case 11:
+            this.ChatButton = ((System.Windows.Controls.Button)(target));
+            
+            #line 38 "..\..\MainWindow.xaml"
+            this.ChatButton.Click += new System.Windows.RoutedEventHandler(this.SendMessageMouseDown);
+            
+            #line default
+            #line hidden
+            return;
+            case 12:
             
             #line 46 "..\..\MainWindow.xaml"
             ((System.Windows.Controls.StackPanel)(target)).MouseDown += new System.Windows.Input.MouseButtonEventHandler(this.DragMoveMouseDown);
@@ -207,11 +218,19 @@ namespace Otchetnost {
             #line default
             #line hidden
             return;
-            case 12:
+            case 13:
             this.ObjectsPanel = ((System.Windows.Controls.StackPanel)(target));
             return;
-            case 13:
-            this.InfoObjectPanel = ((System.Windows.Controls.StackPanel)(target));
+            case 14:
+            
+            #line 61 "..\..\MainWindow.xaml"
+            ((System.Windows.Controls.StackPanel)(target)).MouseDown += new System.Windows.Input.MouseButtonEventHandler(this.ObjectMouseDown);
+            
+            #line default
+            #line hidden
+            return;
+            case 15:
+            this.TasksPanel = ((System.Windows.Controls.StackPanel)(target));
             return;
             }
             this._contentLoaded = true;
