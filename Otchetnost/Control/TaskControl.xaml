@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="Otchetnost.TaskControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Otchetnost"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <StackPanel Margin="0,15,0,15" Orientation="Horizontal">
+            <Image x:Name="ImageTaskStatus" Margin="5,0,5,0"/>
+            <TextBlock x:Name="TaskStatus" Margin="5,0,5,0">Yep/No</TextBlock>
+            <TextBlock x:Name="TaskText" Margin="5,0,5,0">TextLaba</TextBlock>
+            <TextBlock x:Name="TaskDate" Margin="5,0,5,0">DateAdd</TextBlock>
+            <TextBlock x:Name="TaskDeadLine" Margin="5,0,5,0">Deadline</TextBlock>
+        </StackPanel>
+    </Grid>
+</UserControl>

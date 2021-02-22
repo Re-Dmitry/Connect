@@ -29,5 +29,9 @@ C:\Users\Ваня\Desktop\Otchetnost\Otchetnost\bin\Debug\System.Runtime.Compile
 C:\Users\Ваня\Desktop\Otchetnost\Otchetnost\obj\Debug\Otchetnost.csproj.Fody.CopyLocal.cache
 C:\Users\Ваня\Desktop\Otchetnost\Otchetnost\obj\Debug\Otchetnost.csproj.CopyComplete
 C:\Users\Ваня\Desktop\Otchetnost\Otchetnost\obj\Debug\App.baml
-C:\Users\Ваня\Desktop\Otchetnost\Otchetnost\obj\Debug\ChatMessageControl.g.cs
-C:\Users\Ваня\Desktop\Otchetnost\Otchetnost\obj\Debug\ChatMessageControl.baml
+C:\Users\Ваня\Desktop\Otchetnost\Otchetnost\obj\Debug\Control\ChatMessageControl.g.cs
+C:\Users\Ваня\Desktop\Otchetnost\Otchetnost\obj\Debug\Control\TaskControl.g.cs
+C:\Users\Ваня\Desktop\Otchetnost\Otchetnost\obj\Debug\Control\ChatMessageControl.baml
+C:\Users\Ваня\Desktop\Otchetnost\Otchetnost\obj\Debug\Control\TaskControl.baml
+C:\Users\Ваня\Desktop\Otchetnost\Otchetnost\obj\Debug\Control\ObjectControl.g.cs
+C:\Users\Ваня\Desktop\Otchetnost\Otchetnost\obj\Debug\Control\ObjectControl.baml

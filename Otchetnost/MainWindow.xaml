@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="1200" ResizeMode="NoResize" WindowStyle="None">
     <Grid x:Name="MainBar" MouseDown="DragMoveMouseDown" Background="#FFCCF2F4">
-        <TabControl x:Name="Control">
+        <TabControl FontSize="18" x:Name="Control">
             <TabItem Header="Chat">
                 <StackPanel Orientation="Horizontal">
                     <StackPanel Width="300">
@@ -42,55 +42,37 @@
             </TabItem>
             <TabItem Header="Otchetnost">
                 <StackPanel Orientation="Horizontal">
-                    <StackPanel>
-                        <StackPanel Orientation="Horizontal" MouseDown="DragMoveMouseDown">
-                            <ComboBox Width="85">
+                    <StackPanel Width="350">
+                        <StackPanel x:Name="TaskSettings" Orientation="Horizontal">
+                            <ComboBox x:Name="GroupBox">
                                 <ComboBoxItem>
-                                    Group
+                                    
                                 </ComboBoxItem>
                             </ComboBox>
-                            <ComboBox Width="85">
+                            <ComboBox x:Name="StudentBox">
                                 <ComboBoxItem>
-                                    Student
+                                    
                                 </ComboBoxItem>
                             </ComboBox>
                         </StackPanel>
                         <StackPanel Margin="0,5,0,0">
-                            <ScrollViewer VerticalScrollBarVisibility="Hidden" Margin="0,0,6,0" Width="500" Height="96">
+                            <ScrollViewer VerticalScrollBarVisibility="Hidden" Margin="0,0,6,0">
                                 <StackPanel Name="ObjectsPanel" Margin="10,5,0,5">
-                                    <StackPanel Orientation="Vertical">
-                                        <TextBlock FontSize="15" Margin="5,0,5,0">ObjectName</TextBlock>
-                                        <TextBlock FontSize="10" Margin="5,0,5,0">PrepodName</TextBlock>
-                                    </StackPanel>
 
-                                    <StackPanel Orientation="Vertical">
-                                        <TextBlock FontSize="15" Margin="5,0,5,0">ObjectName</TextBlock>
-                                        <TextBlock FontSize="10" Margin="5,0,5,0">PrepodName</TextBlock>
-                                    </StackPanel>
                                 </StackPanel>
                             </ScrollViewer>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontSize="20" Margin="5,0,5,0">TextTask</TextBlock>
-                            <TextBlock FontSize="20" Margin="5,0,5,0">AddButton</TextBlock>
+                        <StackPanel x:Name="AddTask" Orientation="Horizontal">
+                            <TextBox x:Name="TaskBox"  Width="204"></TextBox>
+                            <!--<TextBlock FontSize="20" Margin="5,0,5,0">TextTask</TextBlock>-->
+                            <!--<TextBlock FontSize="20" Margin="5,0,5,0">AddButton</TextBlock>-->
+                            <Button Width="150" Click="Button_Click_1"> Add </Button>
                         </StackPanel>
-                        <ScrollViewer VerticalScrollBarVisibility="Hidden" Width="500">
-                            <StackPanel Orientation="Vertical" x:Name="InfoObjectPanel">
-                                <StackPanel Margin="0,15,0,15" Orientation="Horizontal">
-                                    <TextBlock Margin="5,0,5,0">Yep/No</TextBlock>
-                                    <TextBlock Margin="5,0,5,0">TextLaba</TextBlock>
-                                    <TextBlock Margin="5,0,5,0">DateAdd</TextBlock>
-                                    <TextBlock Margin="5,0,5,0">Deadline</TextBlock>
-                                </StackPanel>
+                        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                            <StackPanel Orientation="Vertical" x:Name="TasksPanel">
 
-                                <StackPanel Margin="0,15,0,15" Orientation="Horizontal">
-                                    <TextBlock Margin="5,0,5,0">Yep/No</TextBlock>
-                                    <TextBlock Margin="5,0,5,0">TextLaba</TextBlock>
-                                    <TextBlock Margin="5,0,5,0">DateAdd</TextBlock>
-                                    <TextBlock Margin="5,0,5,0">Deadline</TextBlock>
-                                </StackPanel>
                             </StackPanel>
                         </ScrollViewer>
                     </StackPanel>
