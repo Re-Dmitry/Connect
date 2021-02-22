@@ -243,15 +243,18 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Class\Authorization.cs" />
-    <Compile Include="ChatMessageControl.xaml.cs">
+    <Compile Include="Class\Tasks.cs" />
+    <Compile Include="Control\ChatMessageControl.xaml.cs">
       <DependentUpon>ChatMessageControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Class\Chat.cs" />
     <Compile Include="Class\SQL.cs" />
-    <Compile Include="Class\Student.cs" />
-    <Compile Include="Class\Teacher.cs" />
     <Compile Include="Class\UserSettings.cs" />
-    <Page Include="ChatMessageControl.xaml">
+    <Page Include="Control\ChatMessageControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\TaskControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -263,12 +266,22 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Control\TaskControl.xaml.cs">
+      <DependentUpon>TaskControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Control\ObjectControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Control\ObjectControl.xaml.cs">
+      <DependentUpon>ObjectControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
