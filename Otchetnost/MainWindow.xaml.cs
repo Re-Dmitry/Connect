@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -33,6 +34,8 @@ namespace Otchetnost
             InitializeComponent();
             AddTask.Visibility = Visibility.Hidden;
             Init();
+            chat_users.ItemsSource = SQL.getTableInfo($"SELECT distinct user_id_r AS 'name' FROM chat_user WHERE user_id_s = {user.id} UNION SELECT distinct user_id_s AS 'name' FROM chat_user WHERE user_id_r = {user.id}; ").AsDataView();
+            group_users.ItemsSource = SQL.getTableInfo($"SELECT UG.group_id AS name FROM user_group AS UG WHERE UG.user_id = {user.id};").AsDataView();
         }
 
         public async void Init()
@@ -62,7 +65,8 @@ namespace Otchetnost
                 await Task.Delay(2500);
 
                 ChatMessageControl cmc = null;
-                if (Chat.Children.Count > 0) cmc = (ChatMessageControl)Chat.Children[Chat.Children.Count - 1];
+                if (Chat.Children.Count > 0) 
+                    cmc = (ChatMessageControl)Chat.Children[Chat.Children.Count - 1];
                 else
                 {
                     Chat.Children.Add(new ChatMessageControl(0,0, " "));
@@ -77,10 +81,15 @@ namespace Otchetnost
                         message = new Chat().ReceiveAllGlobal(((id_message)cmc.Tag).id);
                         break;
                     case 2:
-                        message = new Chat().ReceiveAllGlobal(((id_message)cmc.Tag).id);
+                        message = new Chat().ReceiveAllGroup(((id_message)cmc.Tag).id, 118);    
+                        int f = 10;
                         break;
                     case 3:
-                        message = new Chat().ReceiveAllGlobal(((id_message)cmc.Tag).id);
+                        message = new Chat().ReceiveMessage(((id_message)cmc.Tag).id, 5, 1);
+                        break;
+                    case 4:
+                       
+
                         break;
                     default:
                         break;
@@ -94,7 +103,7 @@ namespace Otchetnost
                         { 
                             if (((id_message)cmcNow.Tag).user_id == item.user_id)
                             {
-                                Chat.Children.Add(new ChatMessageControl(item.id, item.user_id, item.text));
+                                Chat.Children.Add(new ChatMessageControl(item.id, item.user_id,item.text));
                             }
                             else
                             {
@@ -161,6 +170,7 @@ namespace Otchetnost
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string text = TextInputBox.Text;
+            TextInputBox.Text = "";
             Message message = null;
             if (text != String.Empty && text.Length < 1000)
             {
@@ -170,10 +180,10 @@ namespace Otchetnost
                         message = new Chat().SendGlobal(text, user.id);
                         break;
                     case 2:
-                        message = new Chat().SendGlobal(text, user.id);
+                        message = new Chat().SendGroup(text, user.id, 118);
                         break;
                     case 3:
-                        message = new Chat().SendGlobal(text, user.id);
+                        message = new Chat().SendDirect(text, user.id, 5);
                         break;
                     default:
                         break;
@@ -218,7 +228,7 @@ namespace Otchetnost
         {
             Button button = (Button)sender;
             chat_type = 2;
-            chat_id = (int)button.Tag;
+            chat_id = Convert.ToInt32(button.Tag);
             Chat.Children.Clear();
         }
 
@@ -226,7 +236,7 @@ namespace Otchetnost
         {
             Button button = (Button)sender;
             chat_type = 3;
-            chat_id = (int)button.Tag;
+            chat_id = Convert.ToInt32(button.Tag);
             Chat.Children.Clear();
         }
 
@@ -335,6 +345,11 @@ namespace Otchetnost
                     TasksPanel.Children.Add(new TaskControl(item.id, item.text, item.date, item.deadline, countUser, item.count_complete));
                 }
             }
+        }
+
+        private void chat_users_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            chat_type = 4;
         }
     }
 }
