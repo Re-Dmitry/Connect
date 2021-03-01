@@ -54,6 +54,21 @@ namespace Otchetnost
             }
         }
 
+        public static DataTable getTableInfo(string query)
+        {
+            using (MySqlConnection connection = new MySqlConnection(CONNECTION_STRING))
+            {
+                connection.Open();
+                MySqlCommand queryExecute = new MySqlCommand(query, connection);
+                DataTable ass = new DataTable();
+                ass.Load(queryExecute.ExecuteReader());
+                connection.Close();
+                return ass;
+            }
+
+        }
+
+
         public void Dispose()
         {
             Console.WriteLine("Disposable");
