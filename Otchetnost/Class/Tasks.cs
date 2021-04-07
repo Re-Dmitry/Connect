@@ -65,8 +65,19 @@ namespace Otchetnost
                                 "SET `group_id` = @sql_group_id,                                " +
                                 "`discipline_id` = @sql_discipline_id,                          " +
                                 "`semestr` = (SELECT id FROM semestr ORDER BY id DESC LIMIT 1), " +
-                                "`text` = @sql_text;                                            ";
+                                "`text` = @sql_text,                                            " +
+                                "`deadline` = date(FROM_UNIXTIME(@sql_unixtime));               ";
 
+        string sql_InsertTaskNull = "INSERT INTO tasks                                              " +
+                                    "SET `group_id` = @sql_group_id,                                " +
+                                    "`discipline_id` = @sql_discipline_id,                          " +
+                                    "`semestr` = (SELECT id FROM semestr ORDER BY id DESC LIMIT 1), " +
+                                    "`text` = @sql_text;                                            ";
+
+
+        string sql_ChangeTaskStatus = "UPDATE task_user_status tus                                                           " +
+                                      "SET tus.global_complete = !tus.global_complete, tus.last_update = CURRENT_TIMESTAMP() " +
+                                      "WHERE tus.task_id = @sql_task_id && tus.user_id = @sql_user_id;                       ";
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -115,9 +126,20 @@ namespace Otchetnost
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public bool AddTask(int group_id, int discipline_id,string text)
+        public bool AddTask(int group_id, int discipline_id,string text, string unixtime)
         {
-            SQL.Insert<dynamic>(sql_InsertTask, new { sql_group_id = group_id, sql_discipline_id = discipline_id, sql_text = text }, SQL.CONNECTION_STRING);
+            if (unixtime != "NULL") SQL.Insert<dynamic>(sql_InsertTask, new { sql_group_id = group_id, sql_discipline_id = discipline_id, sql_text = text, sql_unixtime = unixtime}, SQL.CONNECTION_STRING);
+            else SQL.Insert<dynamic>(sql_InsertTaskNull, new { sql_group_id = group_id, sql_discipline_id = discipline_id, sql_text = text}, SQL.CONNECTION_STRING);
+           
+            return true;
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        public bool ChangeTaskStatus(int task_id, int user_id)
+        {
+            SQL.Insert<dynamic>(sql_ChangeTaskStatus, new { sql_task_id = task_id, sql_user_id = user_id }, SQL.CONNECTION_STRING);
+
             return true;
         }
     }

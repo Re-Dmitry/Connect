@@ -62,7 +62,18 @@ namespace Otchetnost
 
         public void TaskStatus_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            if (Convert.ToInt32(((TextBlock)sender).Tag) != 1)
+            {
+                TaskStatus.Tag = 1;
+                TaskStatus.Text = "Yes";
+            }
+            else
+            {
+                TaskStatus.Tag = 0;
+                TaskStatus.Text = "No";
+            }
 
+            new Tasks().ChangeTaskStatus(Convert.ToInt32(Tag), MainWindow.now_student_id);
         }
     }
 }
