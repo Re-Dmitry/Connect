@@ -25,7 +25,7 @@ namespace Otchetnost
         public int chat_id { get; set; }
 
         public int now_discipline_id { get; set; }
-        public int now_student_id { get; set; }
+        public static int now_student_id { get; set; }
         public int now_group_id { get; set; }
 
 
@@ -34,6 +34,7 @@ namespace Otchetnost
             InitializeComponent();
             AddTask.Visibility = Visibility.Hidden;
             Init();
+
             chat_users.ItemsSource = SQL.getTableInfo($"SELECT distinct user_id_r AS 'name' FROM chat_user WHERE user_id_s = {user.id} UNION SELECT distinct user_id_s AS 'name' FROM chat_user WHERE user_id_r = {user.id}; ").AsDataView();
             group_users.ItemsSource = SQL.getTableInfo($"SELECT UG.group_id AS name FROM user_group AS UG WHERE UG.user_id = {user.id};").AsDataView();
         }
@@ -56,7 +57,6 @@ namespace Otchetnost
             LoadTasksSection();
             UpdateChatAsync();
         }
-
 
         public async Task UpdateChatAsync()
         {
@@ -160,7 +160,40 @@ namespace Otchetnost
 
         public void LoadTask()
         {
+            List<TasksExtend> task = null;
+            int countUser = 0;
 
+            if (user.GetType().Name == "Student")
+            {
+                task = new Tasks().GetTask(((Student)user).group_id, user.id, now_discipline_id);
+            }
+            else if (user.GetType().Name == "Teacher")
+            {
+                if ((ComboBoxItem)StudentBox.SelectedItem == null || ((ComboBoxItem)StudentBox.SelectedItem).Content == "All")
+                {
+                    task = new Tasks().GetTask(Convert.ToInt32(((ComboBoxItem)GroupBox.SelectedItem).Tag), now_discipline_id);
+                    countUser = new Tasks().GetCountUser(Convert.ToInt32(((ComboBoxItem)GroupBox.SelectedItem).Tag));
+                }
+                else
+                {
+                    task = new Tasks().GetTask(Convert.ToInt32(((ComboBoxItem)GroupBox.SelectedItem).Tag), Convert.ToInt32(((ComboBoxItem)StudentBox?.SelectedItem).Tag), now_discipline_id);
+                }
+            }
+
+            if (task != null)
+            {
+                foreach (var item in task)
+                {
+                    if ((ComboBoxItem)StudentBox.SelectedItem == null || ((ComboBoxItem)StudentBox.SelectedItem).Content == "All")
+                    {
+                        TasksPanel.Children.Add(new TaskControl(item.id, item.text, item.date, item.deadline, countUser, item.count_complete));
+                    }
+                    else
+                    {
+                        TasksPanel.Children.Add(new TaskControl(item.id, item.global_complete, item.text, item.date, item.deadline));
+                    }
+                }
+            }
         }
 
         #endregion
@@ -245,39 +278,7 @@ namespace Otchetnost
             TasksPanel.Children.Clear();
             ObjectControl sp = (ObjectControl)sender;
             now_discipline_id = Convert.ToInt32(sp.Tag);
-            List<TasksExtend> task = null;
-            int countUser = 0;
-            if (user.GetType().Name == "Student")
-            {
-                task = new Tasks().GetTask(((Student)user).group_id, user.id, now_discipline_id);
-            }
-            else if (user.GetType().Name == "Teacher")
-            {
-                if((ComboBoxItem)StudentBox.SelectedItem == null)
-                {
-                    task = new Tasks().GetTask(Convert.ToInt32(((ComboBoxItem)GroupBox.SelectedItem).Tag), now_discipline_id);
-                    countUser = new Tasks().GetCountUser(Convert.ToInt32(((ComboBoxItem)GroupBox.SelectedItem).Tag));
-                }
-                else
-                {
-                    task = new Tasks().GetTask(Convert.ToInt32(((ComboBoxItem)GroupBox.SelectedItem).Tag), Convert.ToInt32(((ComboBoxItem)StudentBox?.SelectedItem).Tag), now_discipline_id);
-                }
-            }
-
-            if (task != null)
-            {
-                foreach (var item in task)
-                {
-                    if ((ComboBoxItem)StudentBox.SelectedItem == null)
-                    {
-                        TasksPanel.Children.Add(new TaskControl(item.id, item.text, item.date, item.deadline, countUser, item.count_complete));
-                    }
-                    else
-                    {
-                        TasksPanel.Children.Add(new TaskControl(item.id, item.global_complete, item.text, item.date, item.deadline));
-                    }
-                }
-            }
+            LoadTask();
         }
 
         private void GroupBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -300,6 +301,10 @@ namespace Otchetnost
 
             StudentBox.Items.Clear();
             ComboBoxItem cis = new ComboBoxItem();
+            cis.Content = "All";
+            cis.Tag = 0;
+            StudentBox.Items.Add(cis);
+
             foreach (var item in student)
             {
                 cis = new ComboBoxItem();
@@ -312,27 +317,39 @@ namespace Otchetnost
 
         }
 
-        #endregion
-
         private void StudentBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             TasksPanel.Children.Clear();
 
-            var task = new Tasks().GetTask(Convert.ToInt32(((ComboBoxItem)GroupBox.SelectedItem).Tag), Convert.ToInt32(((ComboBoxItem)StudentBox?.SelectedItem).Tag), now_discipline_id);
+            LoadTask();
 
-            if (task != null)
-            {
-                foreach (var item in task)
-                {
-                    TasksPanel.Children.Add(new TaskControl(item.id, item.global_complete, item.text, item.date, item.deadline));
-                }
-            }
+            now_student_id = Convert.ToInt32(((ComboBoxItem)((ComboBox)sender).SelectedItem)?.Tag);
+            
+            //var task = new Tasks().GetTask(Convert.ToInt32(((ComboBoxItem)GroupBox.SelectedItem).Tag), Convert.ToInt32(((ComboBoxItem)StudentBox?.SelectedItem).Tag), now_discipline_id);
+
+            //if (task != null)
+            //{
+            //    foreach (var item in task)
+            //    {
+            //        TasksPanel.Children.Add(new TaskControl(item.id, item.global_complete, item.text, item.date, item.deadline));
+            //    }
+            //}
+
+            
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             string text = TaskBox.Text;
-            new Tasks().AddTask(now_group_id, now_discipline_id, text);
+            string unixDateTime = "NULL";
+
+            if (Deadline.SelectedDate.HasValue)
+            {
+                var dateTimeOffset = new DateTimeOffset((DateTime)Deadline.SelectedDate);
+                unixDateTime = dateTimeOffset.ToUnixTimeSeconds().ToString();
+            }
+
+            new Tasks().AddTask(now_group_id, now_discipline_id, text, unixDateTime);
 
             TasksPanel.Children.Clear();
 
@@ -351,5 +368,10 @@ namespace Otchetnost
         {
             chat_type = 4;
         }
+
+        #endregion
+
+
+
     }
 }

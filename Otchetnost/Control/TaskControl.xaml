@@ -9,10 +9,19 @@
     <Grid>
         <StackPanel Margin="0,15,0,15" Orientation="Horizontal">
             <Image x:Name="ImageTaskStatus" Margin="5,0,5,0"/>
-            <TextBlock x:Name="TaskStatus" Margin="5,0,5,0">Yep/No</TextBlock>
-            <TextBlock x:Name="TaskText" Margin="5,0,5,0">TextLaba</TextBlock>
-            <TextBlock x:Name="TaskDate" Margin="5,0,5,0">DateAdd</TextBlock>
-            <TextBlock x:Name="TaskDeadLine" Margin="5,0,5,0">Deadline</TextBlock>
+            <TextBlock x:Name="TaskStatus" Margin="5,0,5,0" MouseDown="TaskStatus_MouseDown">Yep/No</TextBlock>
+            <StackPanel Orientation="Vertical">
+                <TextBlock x:Name="TaskTextInfo" FontSize="10" Margin="5,0,5,0 ">TaskText</TextBlock>
+                <TextBlock x:Name="TaskText" Margin="5,0,5,0">TextLaba</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock x:Name="TaskDateInfo" FontSize="10" Margin="5,0,5,0 ">DateAdded</TextBlock>
+                <TextBlock x:Name="TaskDate" Margin="5,0,5,0">DateAdd</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock x:Name="TaskDeadLineInfo" FontSize="10" Margin="5,0,5,0 ">DeadLine</TextBlock>
+                <TextBlock x:Name="TaskDeadLine" Margin="5,0,5,0">Deadline</TextBlock>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>

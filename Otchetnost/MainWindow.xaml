@@ -54,7 +54,7 @@
 
                                 </ComboBoxItem>
                             </ComboBox>
-                            <ComboBox x:Name="StudentBox">
+                            <ComboBox x:Name="StudentBox" SelectionChanged="StudentBox_SelectionChanged">
                                 <ComboBoxItem>
 
                                 </ComboBoxItem>
@@ -70,15 +70,68 @@
                     </StackPanel>
                     <StackPanel>
                         <StackPanel x:Name="AddTask" Orientation="Horizontal">
-                            <TextBox x:Name="TaskBox"  Width="204"></TextBox>
-                            <!--<TextBlock FontSize="20" Margin="5,0,5,0">TextTask</TextBlock>-->
-                            <!--<TextBlock FontSize="20" Margin="5,0,5,0">AddButton</TextBlock>-->
-                            <Button Width="150" Click="Button_Click_1">Add</Button>
+                            <TextBox x:Name="TaskBox"  Width="510"></TextBox>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Width="100" Height="25" TextAlignment="Center"> Deadline </TextBlock>
+                                <DatePicker Width="150" Height="35" x:Name="Deadline"></DatePicker>
+                            </StackPanel>
+
+                            <Button Width="80" Height="40" Click="Button_Click_1">Add</Button>
                         </StackPanel>
-                        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                        <ScrollViewer  Height="592">
                             <StackPanel Orientation="Vertical" x:Name="TasksPanel">
 
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
+                                </StackPanel>
                             </StackPanel>
+                            
+
                         </ScrollViewer>
                     </StackPanel>
                 </StackPanel>
