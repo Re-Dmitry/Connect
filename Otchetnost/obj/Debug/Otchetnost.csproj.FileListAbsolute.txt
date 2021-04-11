@@ -74,3 +74,5 @@ C:\Users\Ваня\Desktop\oooo\Connect\Otchetnost\obj\Debug\Otchetnost.exe
 C:\Users\Ваня\Desktop\oooo\Connect\Otchetnost\obj\Debug\Otchetnost.pdb
 C:\Users\Ваня\Desktop\oooo\Connect\Otchetnost\obj\Debug\Control\SignInControl.g.cs
 C:\Users\Ваня\Desktop\oooo\Connect\Otchetnost\obj\Debug\Control\SignInControl.baml
+C:\Users\Ваня\Desktop\oooo\Connect\Otchetnost\obj\Debug\Control\SignUpControl.g.cs
+C:\Users\Ваня\Desktop\oooo\Connect\Otchetnost\obj\Debug\Control\SignUpControl.baml

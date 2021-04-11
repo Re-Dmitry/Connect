@@ -17,24 +17,24 @@ using System.Windows.Shapes;
 
 namespace Otchetnost
 {
-    public partial class SignInControl : UserControl
+    public partial class SignUpControl : UserControl
     {
-        string sql_SignInLogin = "SELECT COUNT(*) FROM users u WHERE u.login = @sql_login";
-        string sql_SignInPassword = "SELECT COUNT(*) FROM users u WHERE u.password = @sql_password";
+        string sql_SignUpLogin = "SELECT COUNT(*) FROM users u WHERE u.login = @sql_login";
+        string sql_InsertUser = "INSERT INTO users SET login = @sql_login, `password` = @sql_password";
 
-
-        public SignInControl()
+        public SignUpControl()
         {
             InitializeComponent();
             login_tb.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 200, 200, 200));
             password_tb.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 200, 200, 200));
+            passwordConfirm_tb.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 200, 200, 200));
         }
 
         public void SignInCheck(object sender, MouseButtonEventArgs e)
         {
             if (SignInCheckLogin())
             {
-                if(SignInCheckPassword())
+                if (SignInCheckPassword())
                 {
                     string json = File.ReadAllText("userconfig.json");
                     dynamic jsonObj = JsonConvert.DeserializeObject(json);
@@ -42,6 +42,8 @@ namespace Otchetnost
                     jsonObj["password"] = password_tb.Password;
                     string output = Newtonsoft.Json.JsonConvert.SerializeObject(jsonObj, Newtonsoft.Json.Formatting.Indented);
                     File.WriteAllText("userconfig.json", output);
+
+                    SQL.Insert<dynamic>(sql_InsertUser, new { @sql_login = login_tb.Text, @sql_password = password_tb.Password }, SQL.CONNECTION_STRING);
 
                     System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
                     Application.Current.Shutdown();
@@ -52,42 +54,49 @@ namespace Otchetnost
                 {
                     login_tb.Text = String.Empty;
                     password_tb.Password = String.Empty;
+                    passwordConfirm_tb.Password = String.Empty;
                     login_tb.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 255, 0, 0));
                     password_tb.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 255, 0, 0));
+                    passwordConfirm_tb.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 255, 0, 0));
                 }
             }
             else
             {
                 login_tb.Text = String.Empty;
                 password_tb.Password = String.Empty;
+                passwordConfirm_tb.Password = String.Empty;
                 login_tb.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 255, 0, 0));
                 password_tb.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 255, 0, 0));
+                passwordConfirm_tb.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 255, 0, 0));
             }
         }
 
 
         public bool SignInCheckLogin()
         {
-            if (login_tb.Text == string.Empty || login_tb.Text.Length < 5 || login_tb.Text.Length > 15 || SQL.Select<int,dynamic>(sql_SignInLogin, new {@sql_login = login_tb.Text }, SQL.CONNECTION_STRING)[0] == 0) return false;
+            if (login_tb.Text == string.Empty || login_tb.Text.Length < 5 || login_tb.Text.Length > 15 || SQL.Select<int, dynamic>(sql_SignUpLogin, new { @sql_login = login_tb.Text }, SQL.CONNECTION_STRING)[0] != 0) return false;
             else return true;
         }
 
         public bool SignInCheckPassword()
         {
-            if (login_tb.Text == string.Empty || login_tb.Text.Length < 5 || login_tb.Text.Length > 15 || SQL.Select<int, dynamic>(sql_SignInPassword, new { sql_password = password_tb.Password }, SQL.CONNECTION_STRING)[0] == 0) return false;
+            if (login_tb.Text == string.Empty || login_tb.Text.Length < 5 || login_tb.Text.Length > 15 || passwordConfirm_tb.Password != passwordConfirm_tb.Password) return false;
             else return true;
         }
 
-        private void idk_MouseDown(object sender, MouseButtonEventArgs e)
+        private void ik_MouseDown   (object sender, MouseButtonEventArgs e)
         {
-            sic.Children.Clear();
-            sic.Children.Add(new SignUpControl());
+            suc.Children.Clear();
+            suc.Children.Add(new SignInControl());
         }
 
         private void login_tb_TextChanged(object sender, TextChangedEventArgs e)
         {
             login_tb.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 200, 200, 200));
             password_tb.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 200, 200, 200));
+            passwordConfirm_tb.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 200, 200, 200));
         }
     }
 }
+
+

@@ -32,12 +32,12 @@ namespace Otchetnost
             if (status == 1)
             {
                 TaskStatus.Tag = 1;
-                TaskStatus.Text = "Yes";
+                TaskStatus.Text = "+";
             }
             else
             {
                 TaskStatus.Tag = 0;
-                TaskStatus.Text = "No";
+                TaskStatus.Text = "-";
             }
 
             TaskText.Text = text;
@@ -62,17 +62,17 @@ namespace Otchetnost
 
         public void TaskStatus_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if(MainWindow.user.GetType().Name != "Student")
+            if(MainWindow.user.GetType().Name != "Student" && MainWindow.now_student_id > 0)
             {
                 if (Convert.ToInt32(((TextBlock)sender).Tag) != 1)
                 {
                     TaskStatus.Tag = 1;
-                    TaskStatus.Text = "Yes";
+                    TaskStatus.Text = "+";
                 }
                 else
                 {
                     TaskStatus.Tag = 0;
-                    TaskStatus.Text = "No";
+                    TaskStatus.Text = "-";
                 }
 
                 new Tasks().ChangeTaskStatus(Convert.ToInt32(Tag), MainWindow.now_student_id);

@@ -538,7 +538,7 @@
 
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter TargetName="PART_Border" Property="BorderBrush" Value="Red" />
+                                <Setter TargetName="PART_Border" Property="BorderBrush" Value="Transparent" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -589,8 +589,8 @@
                           Grid.Column="0" 
                           Grid.Row="1">
                                 <Border 
-                                    BorderBrush="Pink" 
-                                    Background="Transparent"
+                                    BorderBrush="AliceBlue" 
+                                    Background="AliceBlue"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="5">
                                     <ContentPresenter 

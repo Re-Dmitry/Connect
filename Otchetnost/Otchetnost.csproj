@@ -250,6 +250,9 @@
     <Compile Include="Class\Chat.cs" />
     <Compile Include="Class\SQL.cs" />
     <Compile Include="Class\UserSettings.cs" />
+    <Compile Include="Control\SignUpControl.xaml.cs">
+      <DependentUpon>SignUpControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="Control\ChatMessageControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -281,6 +284,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Control\ObjectControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\SignUpControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

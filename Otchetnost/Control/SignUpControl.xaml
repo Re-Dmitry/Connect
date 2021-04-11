@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Otchetnost.SignInControl"
+﻿<UserControl x:Class="Otchetnost.SignUpControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,18 +6,22 @@
              xmlns:local="clr-namespace:Otchetnost"
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="1200">
-    <Grid x:Name="sic">
-        <StackPanel Margin="475,305" VerticalAlignment="Center">
-            <TextBlock x:Name="login_txt"><Run Text="Login"/></TextBlock>
+    <Grid x:Name="suc">
+        <StackPanel Margin="474,250" VerticalAlignment="Center">
+            <TextBlock x:Name="login_txt" Height="20"><Run Text="Login"/></TextBlock>
             <TextBox x:Name="login_tb" Height="20" TextChanged="login_tb_TextChanged"/>
 
             <TextBlock x:Name="password_txt"><Run Text="Password"/></TextBlock>
             <PasswordBox x:Name="password_tb" Height="20"></PasswordBox>
-           
-            <StackPanel Orientation ="Horizontal" >
-                <TextBlock x:Name="signin" Width="46" MouseDown="SignInCheck"><Run Text="SignIn"/></TextBlock>
-                <TextBlock x:Name="idk" TextAlignment="Right" Width="201" MouseDown="idk_MouseDown"><Run Text="I dont have account"/></TextBlock>
+
+            <TextBlock x:Name="passwordConfirm_txt"><Run Text="Confirm Password"/></TextBlock>
+            <PasswordBox  x:Name="passwordConfirm_tb" Height="20"></PasswordBox>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="signin" MouseDown="SignInCheck" Margin="0,0,120,0"><Run Text="SignUp"/></TextBlock>
+                <TextBlock x:Name="ik" MouseDown="ik_MouseDown"><Run Text="I have an account"/></TextBlock>
             </StackPanel>
+            
         </StackPanel>
     </Grid>
 </UserControl>

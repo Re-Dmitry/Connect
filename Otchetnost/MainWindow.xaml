@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="1200" ResizeMode="NoResize" WindowStyle="None">
     <Grid x:Name="MainBar" MouseDown="DragMoveMouseDown" Background="#FFCCF2F4">
-        <TabControl FontSize="18" x:Name="Control">
+        <TabControl FontSize="18" x:Name="Control" Background="{x:Null}">
             <TabItem Header="Chat">
                 <StackPanel Orientation="Horizontal">
                     <StackPanel Width="300">
@@ -49,12 +49,12 @@
                 <StackPanel Orientation="Horizontal">
                     <StackPanel Width="350">
                         <StackPanel x:Name="TaskSettings" Orientation="Horizontal">
-                            <ComboBox x:Name="GroupBox">
+                            <ComboBox x:Name="GroupBox" Width="172">
                                 <ComboBoxItem>
 
                                 </ComboBoxItem>
                             </ComboBox>
-                            <ComboBox x:Name="StudentBox" SelectionChanged="StudentBox_SelectionChanged">
+                            <ComboBox x:Name="StudentBox" SelectionChanged="StudentBox_SelectionChanged" Width="155">
                                 <ComboBoxItem>
 
                                 </ComboBoxItem>
@@ -69,16 +69,16 @@
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Width="840">
-                        <StackPanel x:Name="AddTasks" Orientation="Horizontal" Visibility="Collapsed">
-                            <TextBox x:Name="TaskBox"  Width="510"></TextBox>
+                        <StackPanel x:Name="AddTasks" Orientation="Horizontal" Height="50">
+                            <TextBox x:Name="TaskBox"  Width="600"></TextBox>
                             <StackPanel Orientation="Vertical">
-                                <TextBlock Width="100" Height="25" TextAlignment="Center"> Deadline </TextBlock>
+                                <TextBlock Width="100" Height="25" TextAlignment="Center"> Deadline</TextBlock>
                                 <DatePicker Width="150" Height="35" x:Name="Deadline"></DatePicker>
                             </StackPanel>
 
                             <Button Width="80" Height="40" Click="Button_Click_1">Add</Button>
                         </StackPanel>
-                        <ScrollViewer  Height="592">
+                        <ScrollViewer  Height="600" Foreground="#FF622DBD">
                             <StackPanel Orientation="Vertical" x:Name="TasksPanel">
 
                                 <StackPanel Orientation="Vertical">
@@ -130,7 +130,7 @@
                                     <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
                                 </StackPanel>
                             </StackPanel>
-                            
+
 
                         </ScrollViewer>
                     </StackPanel>
