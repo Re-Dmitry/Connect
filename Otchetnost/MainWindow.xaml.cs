@@ -20,7 +20,7 @@ namespace Otchetnost
 {
     public partial class MainWindow : Window
     {
-        UserSettings user = new UserSettings();
+        public static UserSettings user = new UserSettings();
         public int chat_type { get; set; }
         public int chat_id { get; set; }
 
@@ -32,11 +32,8 @@ namespace Otchetnost
         public MainWindow()
         {
             InitializeComponent();
-            AddTask.Visibility = Visibility.Hidden;
+            Control.Visibility = Visibility.Collapsed;
             Init();
-
-            chat_users.ItemsSource = SQL.getTableInfo($"SELECT distinct user_id_r AS 'name' FROM chat_user WHERE user_id_s = {user.id} UNION SELECT distinct user_id_s AS 'name' FROM chat_user WHERE user_id_r = {user.id}; ").AsDataView();
-            group_users.ItemsSource = SQL.getTableInfo($"SELECT UG.group_id AS name FROM user_group AS UG WHERE UG.user_id = {user.id};").AsDataView();
         }
 
         public async void Init()
@@ -47,15 +44,15 @@ namespace Otchetnost
 
             if (new Authorization().Auh(ref user))
             {
-
+                Control.Visibility = Visibility.Visible;
+                LoadTasksSection();
+                UpdateChatAsync();
             }
             else
             {
-
+                MainBar.Children.Add(new SignInControl());
+                Control.Visibility = Visibility.Collapsed;
             }
-
-            LoadTasksSection();
-            UpdateChatAsync();
         }
 
         public async Task UpdateChatAsync()
@@ -127,7 +124,7 @@ namespace Otchetnost
             {
                 case "Student":
                     TaskSettings.Visibility = Visibility.Collapsed;
-                    AddTask.Visibility = Visibility.Collapsed;
+                    AddTasks.Visibility = Visibility.Collapsed;
                     discipline = new Tasks().GetDisciplineStudent(((Student)user).group_id);
 
                     foreach (var item in discipline)
@@ -140,7 +137,7 @@ namespace Otchetnost
                     break;
                 case "Teacher":
                     TaskSettings.Visibility = Visibility.Visible;
-                    AddTask.Visibility = Visibility.Visible;
+                    AddTasks.Visibility = Visibility.Visible;
 
                     GroupBox.SelectionChanged += GroupBox_SelectionChanged;
                     foreach (var item in ((Teacher)user).groups)
@@ -184,7 +181,7 @@ namespace Otchetnost
             {
                 foreach (var item in task)
                 {
-                    if ((ComboBoxItem)StudentBox.SelectedItem == null || ((ComboBoxItem)StudentBox.SelectedItem).Content == "All")
+                    if (((ComboBoxItem)StudentBox.SelectedItem == null || ((ComboBoxItem)StudentBox.SelectedItem).Content == "All") && user.GetType().Name != "Student")
                     {
                         TasksPanel.Children.Add(new TaskControl(item.id, item.text, item.date, item.deadline, countUser, item.count_complete));
                     }
@@ -370,8 +367,6 @@ namespace Otchetnost
         }
 
         #endregion
-
-
 
     }
 }

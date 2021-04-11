@@ -68,8 +68,8 @@
                             </ScrollViewer>
                         </StackPanel>
                     </StackPanel>
-                    <StackPanel>
-                        <StackPanel x:Name="AddTask" Orientation="Horizontal">
+                    <StackPanel Width="840">
+                        <StackPanel x:Name="AddTasks" Orientation="Horizontal" Visibility="Collapsed">
                             <TextBox x:Name="TaskBox"  Width="510"></TextBox>
                             <StackPanel Orientation="Vertical">
                                 <TextBlock Width="100" Height="25" TextAlignment="Center"> Deadline </TextBlock>

@@ -28,10 +28,10 @@ namespace Otchetnost
                                               "WHERE login = @sql_login                                                            ";
 
             string sqlSelectTeacherGroup = "SELECT g.id,c.`name` as courseName, g.`course`, g.`group` FROM group_discipline AS gd " +
-                                           "JOIN `groups` AS g ON g.id = gd.group_id                                " +
-                                           "JOIN course AS c ON c.id = g.course_id                                  " +
-                                           "WHERE gd.teacher_id = @sql_teacher_id                                   " +
-                                           "GROUP BY g.id;                                                          ";
+                                           "JOIN `groups` AS g ON g.id = gd.group_id                                              " +
+                                           "JOIN course AS c ON c.id = g.course_id                                                " +
+                                           "WHERE gd.teacher_id = @sql_teacher_id                                                 " +
+                                           "GROUP BY g.id;                                                                        ";
 
 
             if (jsonObj["login"] != string.Empty)
