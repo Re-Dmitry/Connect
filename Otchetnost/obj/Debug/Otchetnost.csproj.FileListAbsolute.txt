@@ -72,3 +72,5 @@ C:\Users\Ваня\Desktop\oooo\Connect\Otchetnost\obj\Debug\Otchetnost.csproj.Fo
 C:\Users\Ваня\Desktop\oooo\Connect\Otchetnost\obj\Debug\Otchetnost.csproj.CopyComplete
 C:\Users\Ваня\Desktop\oooo\Connect\Otchetnost\obj\Debug\Otchetnost.exe
 C:\Users\Ваня\Desktop\oooo\Connect\Otchetnost\obj\Debug\Otchetnost.pdb
+C:\Users\Ваня\Desktop\oooo\Connect\Otchetnost\obj\Debug\Control\SignInControl.g.cs
+C:\Users\Ваня\Desktop\oooo\Connect\Otchetnost\obj\Debug\Control\SignInControl.baml

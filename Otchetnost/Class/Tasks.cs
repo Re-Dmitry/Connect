@@ -46,6 +46,11 @@ namespace Otchetnost
                                       "left JOIN teacher AS t ON t.id = gd.teacher_id                        " +
                                       "WHERE gd.group_id = @sql_group_id && gd.teacher_id = @sql_teacher_id; ";
 
+        string sql_SelectDisciplineStudent = "SELECT gd.discipline_id, d.name, t.fio FROM group_discipline AS gd    " +
+                                             "left JOIN disciplines AS d ON d.id = gd.discipline_id                 " +
+                                             "left JOIN teacher AS t ON t.id = gd.teacher_id                        " +
+                                             "WHERE gd.group_id = @sql_group_id;                                    ";
+
         string sql_SelectStudent = "SELECT u.id, u.login, u.name, u.img, c.name AS courseName, g.id as group_id, g.course, g.`group`, ug.subgroup FROM `users` AS u  " +
                                    "JOIN `user_group` AS ug ON u.id = ug.user_id                                                                                     " +
                                    "JOIN `groups` AS g ON g.id = ug.group_id                                                                                         " +
@@ -98,8 +103,8 @@ namespace Otchetnost
 
         public List<Discipline> GetDisciplineStudent(int group_id)
         {
-            var discipline = SQL.Select<Discipline, dynamic>(sql_SelectDiscipline, new { sql_group_id = group_id }, SQL.CONNECTION_STRING);
-            return discipline;
+            var discipline = SQL.Select<Discipline, dynamic>(sql_SelectDisciplineStudent, new { sql_group_id = group_id }, SQL.CONNECTION_STRING);
+            return discipline;  
         }
 
         public List<Discipline> GetDisciplineStudent(int group_id, int teacher_id)
