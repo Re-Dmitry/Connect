@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <StackPanel Tag="1" Orientation="Vertical">
+        <StackPanel Tag="1" Orientation="Vertical" Height="35" MouseEnter="Object_MouseEnter" MouseLeave="Object_MouseLeave">
             <TextBlock x:Name="ObjectName"  FontSize="15" Margin="5,0,5,0">ObjectName</TextBlock>
             <TextBlock x:Name="TeachertName" FontSize="10" Margin="5,0,5,0">PrepodName</TextBlock>
         </StackPanel>

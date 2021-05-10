@@ -31,12 +31,13 @@ namespace Otchetnost
     {
         public int discipline_id { get; set; }
         public string name { get; set; }
+        public string teacher_id { get; set; }
         public string fio { get; set; }
     }
 
     public class Tasks
     {
-        string sql_SelectTask = "SELECT t.id, t.group_id,t.discipline_id, t.`text`, t.`date`,t.deadline , tus.local_complete, tus.global_complete, tus.last_update, ti.`text` AS extend_text, ti.link, ti.img FROM tasks AS t  " +
+        string sql_SelectTask = "SELECT t.id, t.group_id,t.discipline_id, t.`text`,  DATE(t.`date`) date, DATE(t.deadline) deadline , tus.local_complete, tus.global_complete, tus.last_update, ti.`text` AS extend_text, ti.link, ti.img FROM tasks AS t  " +
                                 "left JOIN task_user_status AS tus ON tus.task_id = t.id                                                                                                                                       " +
                                 "left JOIN task_information AS ti ON ti.task_id= t.id                                                                                                                                          " +
                                 "WHERE t.group_id = @sql_group_id && tus.user_id = @sql_user_id && t.discipline_id = @sql_discipline_id;                                                                                       ";

@@ -10,9 +10,8 @@ namespace Otchetnost
 {
     public class Authorization
     {
-        public bool Auh(ref UserSettings us)
+        public bool Auh(ref UserSettings us, string json)
         {
-            string json = File.ReadAllText("userconfig.json");
             dynamic jsonObj = JsonConvert.DeserializeObject(json);
 
             string sqlSelectUserType = "SELECT u.type FROM users AS u WHERE u.login = @login";
@@ -46,6 +45,9 @@ namespace Otchetnost
                     case 1:
                         us = SQL.Select<Teacher, dynamic>(sqlSelectTeacherSettings, new { sql_login = jsonObj["login"] }, SQL.CONNECTION_STRING)[0];
                         ((Teacher)us).groups = SQL.Select<Group, dynamic>(sqlSelectTeacherGroup, new { sql_teacher_id = us.id }, SQL.CONNECTION_STRING);
+                        break;
+                    case 2:
+                        us = SQL.Select<Admin, dynamic>(sqlSelectTeacherSettings, new { sql_login = jsonObj["login"] }, SQL.CONNECTION_STRING)[0];
                         break;
                     default:
                         return false;

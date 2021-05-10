@@ -1,65 +1,263 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Otchetnost.App" Collapsed="true">
-    <Position X="8.5" Y="1.25" Width="1.5" />
+  <Class Name="Otchetnost.App">
+    <Position X="14.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>App.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Otchetnost.Authorization" Collapsed="true">
-    <Position X="10.25" Y="1.25" Width="1.5" />
+  <Class Name="Otchetnost.Authorization">
+    <Position X="16.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Authorization.cs</FileName>
+      <FileName>Class\Authorization.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Otchetnost.ISQL" Collapsed="true">
-    <Position X="6" Y="1.25" Width="1.5" />
+  <Class Name="Otchetnost.id_message">
+    <Position X="23.25" Y="10.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ISQL.cs</FileName>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Class\Chat.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Otchetnost.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="12" Y="1.25" Width="1.5" />
+  <Class Name="Otchetnost.Message">
+    <Position X="18" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAgAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>MainWindow.xaml.cs</FileName>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAIAAAAAQAAEgA=</HashCode>
+      <FileName>Class\Chat.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Orientation="Bottom" Position="1.3" Collapsed="true" />
   </Class>
-  <Class Name="Otchetnost.messageusercontrol" BaseTypeListCollapsed="true">
-    <Position X="8.5" Y="2.25" Width="1.5" />
+  <Class Name="Otchetnost.Chat">
+    <Position X="16.25" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>messageusercontrol.xaml.cs</FileName>
+      <HashCode>AEBAAEQAAAACAAACAAoAAAAEQCAAAMAIBAAAAgAAAAA=</HashCode>
+      <FileName>Class\Chat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Otchetnost.Teachers">
+    <Position X="21.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Class\EditInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Otchetnost.EditInfo">
+    <Position X="18" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAACQAERBICAAAAAAAAAACAoAAACAAAAACAA=</HashCode>
+      <FileName>Class\EditInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Otchetnost.Courses">
+    <Position X="21.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Class\Profile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Otchetnost.Profile">
+    <Position X="14.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAGACAACAAAAAAAQAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Class\Profile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Otchetnost.Schedule">
+    <Position X="18" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAABAAgAAAAAAUAFAEA=</HashCode>
+      <FileName>Class\Schedule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Otchetnost.SqlSchedule">
+    <Position X="16.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Class\Schedule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Otchetnost.SQL" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAACCAAAAAIAAAgAAAAAAAQAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Class\SQL.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Otchetnost.SQL" Collapsed="true">
-    <Position X="6" Y="2.5" Width="1.5" />
+  <Class Name="Otchetnost.TasksInfo">
+    <Position X="11" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAEAACCAAAAAIAAAAAAAAAAAQAAAAAAAAQAAAAAA=</HashCode>
-      <FileName>SQL.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="Otchetnost.UserSettings" Collapsed="true">
-    <Position X="8.25" Y="4.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAAAEAAAAAAAAAgAAEAA=</HashCode>
-      <FileName>UserSettings.cs</FileName>
+      <HashCode>AAAAAAAgAAIAAAIAAAAAAAAABAAgAAAIAAAAQQABAgA=</HashCode>
+      <FileName>Class\Tasks.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Otchetnost.Properties.Resources" Collapsed="true">
-    <Position X="10.25" Y="2.25" Width="1.5" />
+  <Class Name="Otchetnost.TasksExtend">
+    <Position X="8.25" Y="6" Width="1.5" />
+    <InheritanceLine Type="Otchetnost.TasksInfo" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="11" Y="6.625" />
+        <Point X="9.75" Y="6.625" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAgAAAAEA=</HashCode>
+      <FileName>Class\Tasks.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Otchetnost.Discipline">
+    <Position X="23.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgIAAAAAAAAAAAAAABAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Class\Tasks.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Otchetnost.Tasks">
+    <Position X="19.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAQCgAAAACgAAAAAAAAAAAAIABAAIBAUIAAACgAAA=</HashCode>
+      <FileName>Class\Tasks.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Otchetnost.UserSettings">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAAAEAAAAAAAAAgAAEgA=</HashCode>
+      <FileName>Class\UserSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Otchetnost.Group">
+    <Position X="23.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAggA=</HashCode>
+      <FileName>Class\UserSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Otchetnost.Teacher">
+    <Position X="7.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Class\UserSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Otchetnost.Student">
+    <Position X="9.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAgAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAgEA=</HashCode>
+      <FileName>Class\UserSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Otchetnost.Admin">
+    <Position X="12" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Class\UserSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Otchetnost.ChatMessageControl" BaseTypeListCollapsed="true">
+    <Position X="19.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Control\ChatMessageControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Otchetnost.EditDiscipline" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAgAAAAAAAAAAAAAgAAEAQAAAAAAABBAAAAAAAAA=</HashCode>
+      <FileName>Control\EditDiscipline.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Otchetnost.EditGroupDiscipline" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAgAgAAAAAAAAAAAgAEEAQAAAAAAABAAAAAAAAAI=</HashCode>
+      <FileName>Control\EditGroupDiscipline.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Otchetnost.EditPermissionStudent" BaseTypeListCollapsed="true">
+    <Position X="19.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgACAAAAACEAAAAAgAAAAQAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Control\EditPermissionStudent.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Otchetnost.EditPermissionTeacher" BaseTypeListCollapsed="true">
+    <Position X="21.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgACAAAAACAAAAAAgAAEAQAAAAAAABAAAAAABAAA=</HashCode>
+      <FileName>Control\EditPermissionTeacher.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Otchetnost.ObjectControl" BaseTypeListCollapsed="true">
+    <Position X="21.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAA=</HashCode>
+      <FileName>Control\ObjectControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Otchetnost.RaspisaniePage" BaseTypeListCollapsed="true">
+    <Position X="25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Control\RaspisaniePage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Otchetnost.RaspisaniePageSection" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Control\RaspisaniePageSection.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Otchetnost.SignInControl" BaseTypeListCollapsed="true">
+    <Position X="21.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAACAAAAAAAAAAAAAAAFAAQAAAQQAA=</HashCode>
+      <FileName>Control\SignInControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Otchetnost.SignUpControl" BaseTypeListCollapsed="true">
+    <Position X="23.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAQAAAAAAAAAAAAAAEAAAAAAACAABAAQAAAAQAA=</HashCode>
+      <FileName>Control\SignUpControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Otchetnost.TaskControl" BaseTypeListCollapsed="true">
+    <Position X="18" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAgAAAAAAAIAAAAAgAAAAQAAAAAAAAAAAEAAAIAg=</HashCode>
+      <FileName>Control\TaskControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Otchetnost.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IIAhYAAwAAJBCBACAQAAACEAAYDABIAUQAgTAAAAgYA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Left" Position="0.133" Collapsed="true" />
+  </Class>
+  <Class Name="Otchetnost.Properties.Resources">
+    <Position X="23.25" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
     </TypeIdentifier>
   </Class>
-  <Class Name="Otchetnost.Properties.Settings" Collapsed="true">
-    <Position X="12" Y="2.25" Width="1.5" />
+  <Class Name="Otchetnost.Properties.Settings">
+    <Position X="19.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>

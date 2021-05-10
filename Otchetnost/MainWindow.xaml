@@ -6,22 +6,32 @@
         xmlns:local="clr-namespace:Otchetnost"
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="1200" ResizeMode="NoResize" WindowStyle="None">
-    <Grid x:Name="MainBar" MouseDown="DragMoveMouseDown" Background="#FFCCF2F4">
-        <TabControl FontSize="18" x:Name="Control" Background="{x:Null}">
-            <TabItem Header="Chat">
+    <Grid x:Name="MainBar" MouseDown="DragMoveMouseDown"  Background="#FF2B2B2B">
+        <TabControl TabStripPlacement="Left" FontSize="18" x:Name="Control" Background="Transparent">
+            <TabItem>
+                <TabItem.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Height="20" Width="20" Margin="0,5,0,5">
+                            <StackPanel.Background>
+                                <ImageBrush ImageSource="Image/c.png"/>
+                            </StackPanel.Background>
+                        </StackPanel>
+                    </DataTemplate>
+                </TabItem.HeaderTemplate>
+
                 <StackPanel Orientation="Horizontal">
                     <StackPanel Width="300">
-                        <Button Tag="1" Height="25" Margin="100,25,10,0" VerticalAlignment="Center" Content="ChatGlobalButton" Click="ChatTypeGlobal_Click"/>
-                        <Button Tag="2" Height="25" Margin="100,25,10,0" VerticalAlignment="Center" Content="ChatGroupButton" Click="ChatTypeGroup_Click"/>
+                        <Button Background="Transparent" Tag="1" Height="40" Margin="25,25" VerticalAlignment="Center" Content="Global Chat" Click="ChatTypeGlobal_Click"/>
+                        <!--<Button Tag="2" Height="25" Margin="100,25,10,0" VerticalAlignment="Center" Content="ChatGroupButton" Click="ChatTypeGroup_Click"/>
                         <ComboBox x:Name ="group_users" DisplayMemberPath="name" 
             SelectedValuePath="id" DataContextChanged="chat_users_DataContextChanged" />
                         <Button Tag="3" Height="25" Margin="100,25,10,0" VerticalAlignment="Center" Content="ChatDirectButton" Click="ChatTypeDirect_Click"/>
                         <ComboBox x:Name ="chat_users" DisplayMemberPath="name" 
-            SelectedValuePath="id"/>
+            SelectedValuePath="id"/>-->
 
 
                     </StackPanel>
-                    <StackPanel x:Name="ChatPanel" Width="890" Margin="0,0,0,0" Background="#FFF4F9F9">
+                    <StackPanel x:Name="ChatPanel" Width="851" Margin="0,0,0,0">
                         <ScrollViewer x:Name="ScrollChat" Height="590">
                             <StackPanel x:Name="Chat" Orientation="Vertical" VerticalAlignment="Bottom">
 
@@ -39,109 +49,226 @@
                             </StackPanel>
                         </ScrollViewer>
                         <StackPanel Orientation="Horizontal">
-                            <TextBox Height="40" x:Name="TextInputBox" Width="700" Margin="20,20,20,0"></TextBox>
-                            <Button Height="25" x:Name="ChatButton" Width="100" Margin="0,25,0,0" VerticalAlignment="Center" Content="Send" Click="Button_Click"/>
+                            <TextBox Background="WhiteSmoke" Height="70" x:Name="TextInputBox" Width="730" Margin="20,20"></TextBox>
+                            <Button Background="Transparent" Height="25" x:Name="ChatButton" Width="70" VerticalAlignment="Center" Content="Send" Click="Button_Click"/>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Otchetnost">
+            <TabItem>
+                <TabItem.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Height="20" Width="20" Margin="0,5,0,5">
+                            <StackPanel.Background>
+                                <ImageBrush ImageSource="Image/o.png"/>
+                            </StackPanel.Background>
+                        </StackPanel>
+                    </DataTemplate>
+                </TabItem.HeaderTemplate>
                 <StackPanel Orientation="Horizontal">
-                    <StackPanel Width="350">
+                    <StackPanel Width="330">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Width="171">Group</TextBlock>
+                            <TextBlock>Student</TextBlock>
+                        </StackPanel>
                         <StackPanel x:Name="TaskSettings" Orientation="Horizontal">
-                            <ComboBox x:Name="GroupBox" Width="172">
+                            <ComboBox IsEditable="True" x:Name="GroupBox" Width="172">
                                 <ComboBoxItem>
 
                                 </ComboBoxItem>
                             </ComboBox>
-                            <ComboBox x:Name="StudentBox" SelectionChanged="StudentBox_SelectionChanged" Width="155">
+                            <ComboBox IsEditable="True" x:Name="StudentBox" SelectionChanged="StudentBox_SelectionChanged" Width="155">
                                 <ComboBoxItem>
 
                                 </ComboBoxItem>
                             </ComboBox>
                         </StackPanel>
                         <StackPanel Margin="0,5,0,0">
-                            <ScrollViewer VerticalScrollBarVisibility="Hidden" Margin="0,0,6,0">
+                            <ScrollViewer VerticalScrollBarVisibility="Hidden" Margin="0,0,6,0" Height="654">
                                 <StackPanel Name="ObjectsPanel" Margin="10,5,0,5">
 
                                 </StackPanel>
                             </ScrollViewer>
                         </StackPanel>
                     </StackPanel>
-                    <StackPanel Width="840">
+                    <StackPanel Width="820">
                         <StackPanel x:Name="AddTasks" Orientation="Horizontal" Height="50">
-                            <TextBox x:Name="TaskBox"  Width="600"></TextBox>
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Width="100" Height="25" TextAlignment="Center"> Deadline</TextBlock>
-                                <DatePicker Width="150" Height="35" x:Name="Deadline"></DatePicker>
+                            <StackPanel Width="20">
+                                <TextBlock Tag="0" MouseDown="TextBlock_MouseDown" FontSize="30"> +</TextBlock>
+                            </StackPanel>
+                            <StackPanel Visibility="Collapsed" x:Name="AddTasksFields" Orientation="Horizontal">
+                                <TextBox  x:Name="TaskBox"  Width="569"></TextBox>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Width="100" Height="20" TextAlignment="Center"> Deadline</TextBlock>
+                                    <DatePicker  Width="150" FontSize="15" Height="30" x:Name="Deadline"></DatePicker>
+                                </StackPanel>
+
+                                <Button BorderBrush="Transparent" Background="Transparent" Width="80" Height="40" Click="Button_Click_1">Add</Button>
                             </StackPanel>
 
-                            <Button Width="80" Height="40" Click="Button_Click_1">Add</Button>
                         </StackPanel>
-                        <ScrollViewer  Height="600" Foreground="#FF622DBD">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" Height="640">
                             <StackPanel Orientation="Vertical" x:Name="TasksPanel">
 
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
-                                </StackPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Width="150" Height="50" TextAlignment="Center"> Deadline</TextBlock>
-                                </StackPanel>
                             </StackPanel>
-
-
                         </ScrollViewer>
                     </StackPanel>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Raspisanie">
-                Empty
+            <TabItem>
+                <TabItem.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Height="20" Width="20" Margin="0,5,0,5">
+                            <StackPanel.Background>
+                                <ImageBrush ImageSource="Image/r.png"/>
+                            </StackPanel.Background>
+                        </StackPanel>
+                    </DataTemplate>
+                </TabItem.HeaderTemplate>
+                <StackPanel>
+                    <ComboBox IsEditable="True" Name="ScheduleGroupBox"></ComboBox>
+                    <StackPanel x:Name="SchedUpper" HorizontalAlignment="Center" Orientation="Horizontal"  Height="310"  Margin="10,0">
+
+
+
+                    </StackPanel>
+
+                    <StackPanel x:Name="SchedLower"  HorizontalAlignment="Center" Orientation="Horizontal"  Height="310"  Margin="10,15,0,0">
+
+
+
+                    </StackPanel>
+                </StackPanel>
             </TabItem>
-            <TabItem Header="Profile">
-                <Label Content="Label" Height="100" Width="100"/>
+            <TabItem>
+                <TabItem.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Height="20" Width="20" Margin="0,5,0,5">
+                            <StackPanel.Background>
+                                <ImageBrush ImageSource="Image/p.png"/>
+                            </StackPanel.Background>
+                        </StackPanel>
+                    </DataTemplate>
+                </TabItem.HeaderTemplate>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Width="600">
+
+                        <StackPanel Orientation="Horizontal" Height="35">
+                            <Label Content="Login :"/>
+                            <Label Name="login_txt" Content="empty"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Height="35">
+                            <Label Content="Status :"/>
+                            <Label Name="status_txt" Content="empty"/>
+                        </StackPanel>
+
+                        <StackPanel x:Name="UGroup" Orientation="Horizontal" Height="35">
+                            <Label Content="Group :"/>
+                            <Label Name="group_txt" Content="empty"/>
+                        </StackPanel>
+
+                        <StackPanel x:Name="UnGroup" Orientation="Horizontal" Height="37">
+                            <Label Content="Group :"/>
+                            <ComboBox x:Name="ComboCourse" Height="35" VerticalAlignment="Top" Width="135"/>
+                            <Label Content="Accept" MouseDown="Label_MouseDown"/>
+                        </StackPanel>
+
+                        <StackPanel>
+                            <Label Content="Change Account" MouseDown="ChangeAccount_MouseDown"/>
+                        </StackPanel>
+
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Visibility="Collapsed" x:Name="PrintOtchetnost">
+                <TabItem.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Height="20" Width="20" Margin="0,5,0,5">
+                            <StackPanel.Background>
+                                <ImageBrush ImageSource="Image/f.png"/>
+                            </StackPanel.Background>
+                        </StackPanel>
+                    </DataTemplate>
+                </TabItem.HeaderTemplate>
+                <StackPanel x:Name="PrintOtchetnostPanel">
+
+                </StackPanel>
+            </TabItem>
+            <TabItem  x:Name="UserSettings">
+                <TabItem.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel Height="20" Width="20" Margin="0,5,0,5">
+                            <StackPanel.Background>
+                                <ImageBrush ImageSource="Image/s.png"/>
+                            </StackPanel.Background>
+                        </StackPanel>
+                    </DataTemplate>
+                </TabItem.HeaderTemplate>
+                <StackPanel x:Name="UserSettingsPanel">
+                    <TabControl>
+                        <TabItem Header="                Discipline               |">
+                            <StackPanel>
+                                <StackPanel Margin="0,5,0,5" Orientation="Horizontal" x:Name="AddDisciplinePanel" Height="25">
+                                    <TextBox Margin="5,0,25,0" Width="1050" Name="AddDisciplineBoxxx"></TextBox>
+
+                                    <TextBlock x:Name="AddDisciplineBtn" MouseDown="AddDiscipline_MouseDown">Send</TextBlock>
+                                </StackPanel>
+                                <StackPanel x:Name="DisciplineList" Height="640">
+
+                                </StackPanel>
+                            </StackPanel>
+                        </TabItem>
+
+                        <TabItem Header="                 Group               |">
+                            <StackPanel x:Name="GroupList" Height="640">
+
+                            </StackPanel>
+                        </TabItem>
+
+                        <TabItem Header="                 Group Discipline               |">
+                            <StackPanel Height="645">
+                                <ComboBox  IsEditable="True" Name="EditGroupDisciplineBox"></ComboBox>
+
+                                <StackPanel Margin="0,5,0,5" Orientation="Horizontal" x:Name="AddGroupDisciplineList" Height="25">
+                                    <ComboBox Margin="5,0,5,0" Width="500" IsEditable="True" Name="AddDisciplineBox"></ComboBox>
+                                    <ComboBox Margin="40,0,35,0" Width="500" IsEditable="True" Name="AddTeacherBox"></ComboBox>
+
+                                    <TextBlock x:Name="AddGroupDiscipline" MouseDown="AddGroupDiscipline_MouseDown">Send</TextBlock>
+                                </StackPanel>
+
+                                <StackPanel x:Name="GroupDisciplineList" Height="610">
+
+                                </StackPanel>
+                            </StackPanel>
+                        </TabItem>
+
+                        <TabItem Header="                 User Permission                               ">
+                            <StackPanel x:Name="UserList" Orientation="Horizontal" Height="645">
+                                <StackPanel Width="550">
+                                    <TextBlock>Student</TextBlock>
+                                    <StackPanel x:Name="UserListStudent">
+
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Width="550">
+                                    <TextBlock>Teacher</TextBlock>
+
+                                    <ComboBox  IsEditable="True" x:Name="UserListStudentToTeacher" Margin="0,0,84,0"></ComboBox>
+                                    <StackPanel x:Name="UserListTeacher">
+
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </TabItem>
+                    </TabControl>
+
+                </StackPanel>
             </TabItem>
         </TabControl>
+        <TextBlock FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="8, 5, 35, 30" Foreground="#FF7C7C7C" MouseDown="AppMinimize"> ―</TextBlock>
+        <TextBlock  FontSize="18" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="8, 5, 35, 5" Foreground="#FFFF90A6" MouseDown="AppExit"> ⛌</TextBlock>
+
     </Grid>
 </Window>
