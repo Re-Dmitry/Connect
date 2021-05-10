@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Ваня\Desktop\d\TestRep\Otchetnost\Otchetnost\obj\Release\
+C:\Users\Ваня\Desktop\oooo\Connect\Otchetnost\obj\Release\
 Otchetnost
 none
 false
 TRACE
-C:\Users\Ваня\Desktop\d\TestRep\Otchetnost\Otchetnost\App.xaml
-21771460704
+C:\Users\Ваня\Desktop\oooo\Connect\Otchetnost\App.xaml
+81246186795
 
-10-1204448824
-144-17040382
-MainWindow.xaml;messageusercontrol.xaml;
+19631160197
+144493755325
+Control\ChatMessageControl.xaml;Control\EditDiscipline.xaml;Control\EditGroupDiscipline.xaml;Control\SignInControl.xaml;Control\TaskControl.xaml;MainWindow.xaml;Control\ObjectControl.xaml;Control\SignUpControl.xaml;
 
-True
+False
 

@@ -6,19 +6,18 @@
              xmlns:local="clr-namespace:Otchetnost"
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="1200">
-    <Grid>
-        <StackPanel Margin="474,306" VerticalAlignment="Center">
+    <Grid x:Name="sic">
+        <StackPanel Margin="475,305" VerticalAlignment="Center">
             <TextBlock x:Name="login_txt"><Run Text="Login"/></TextBlock>
             <TextBox x:Name="login_tb" Height="20" TextChanged="login_tb_TextChanged"/>
 
             <TextBlock x:Name="password_txt"><Run Text="Password"/></TextBlock>
-            <TextBox x:Name="password_tb" Height="20"/>
+            <PasswordBox x:Name="password_tb" Height="20"></PasswordBox>
            
             <StackPanel Orientation ="Horizontal" >
                 <TextBlock x:Name="signin" Width="46" MouseDown="SignInCheck"><Run Text="SignIn"/></TextBlock>
                 <TextBlock x:Name="idk" TextAlignment="Right" Width="201" MouseDown="idk_MouseDown"><Run Text="I dont have account"/></TextBlock>
             </StackPanel>
-
         </StackPanel>
     </Grid>
 </UserControl>

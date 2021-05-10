@@ -38,5 +38,10 @@ namespace Otchetnost
         public string group { get; set; }
         public string subgroup { get; set; }
     }
+
+    public class Admin : UserSettings
+    {
+       
+    }
 }
 

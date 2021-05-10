@@ -39,7 +39,7 @@ namespace Otchetnost
                     string json = File.ReadAllText("userconfig.json");
                     dynamic jsonObj = JsonConvert.DeserializeObject(json);
                     jsonObj["login"] = login_tb.Text;
-                    jsonObj["password"] = password_tb.Text;
+                    jsonObj["password"] = password_tb.Password;
                     string output = Newtonsoft.Json.JsonConvert.SerializeObject(jsonObj, Newtonsoft.Json.Formatting.Indented);
                     File.WriteAllText("userconfig.json", output);
 
@@ -50,12 +50,16 @@ namespace Otchetnost
                 }
                 else
                 {
+                    login_tb.Text = String.Empty;
+                    password_tb.Password = String.Empty;
                     login_tb.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 255, 0, 0));
                     password_tb.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 255, 0, 0));
                 }
             }
             else
             {
+                login_tb.Text = String.Empty;
+                password_tb.Password = String.Empty;
                 login_tb.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 255, 0, 0));
                 password_tb.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 255, 0, 0));
             }
@@ -70,13 +74,14 @@ namespace Otchetnost
 
         public bool SignInCheckPassword()
         {
-            if (login_tb.Text == string.Empty || login_tb.Text.Length < 5 || login_tb.Text.Length > 15 || SQL.Select<int, dynamic>(sql_SignInPassword, new { sql_password = password_tb.Text }, SQL.CONNECTION_STRING)[0] == 0) return false;
+            if (login_tb.Text == string.Empty || login_tb.Text.Length < 5 || login_tb.Text.Length > 15 || SQL.Select<int, dynamic>(sql_SignInPassword, new { sql_password = password_tb.Password }, SQL.CONNECTION_STRING)[0] == 0) return false;
             else return true;
         }
 
         private void idk_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            sic.Children.Clear();
+            sic.Children.Add(new SignUpControl());
         }
 
         private void login_tb_TextChanged(object sender, TextChangedEventArgs e)

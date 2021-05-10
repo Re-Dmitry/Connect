@@ -12,11 +12,19 @@ namespace Otchetnost
     class SQL : IDisposable
     {
         public static readonly string CONNECTION_STRING =
-                                        "Server=195.2.71.142;" +
-                                        "User=guli;" +
-                                        "database=otchentnost;" +
-                                        "port=3306;" +
-                                        "password=gg;";
+                                      "Server=195.2.71.142;" +
+                                      "User=guli;" +
+                                      "database=otchentnost;" +
+                                      "port=3306;" +
+                                      "password=gg;";
+
+        public static readonly string CONNECTION_STRING_IATU =
+                                      "Server=95.104.192.212;    " +
+                                      "User=aist;                " +
+                                      "database=raspisanie;      " +
+                                      "port=3306;                " +
+                                      "CharSet=utf8;             " +
+                                      "password=123;             ";
 
         public static List<T> Select<T, U>(string sql, U param, string connectionString)
         {

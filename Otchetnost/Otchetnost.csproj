@@ -243,6 +243,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Class\Authorization.cs" />
+    <Compile Include="Class\ControlVerification.cs" />
+    <Compile Include="Class\EditInfo.cs" />
+    <Compile Include="Class\Profile.cs" />
+    <Compile Include="Class\Schedule.cs" />
     <Compile Include="Class\Tasks.cs" />
     <Compile Include="Control\ChatMessageControl.xaml.cs">
       <DependentUpon>ChatMessageControl.xaml</DependentUpon>
@@ -250,7 +254,52 @@
     <Compile Include="Class\Chat.cs" />
     <Compile Include="Class\SQL.cs" />
     <Compile Include="Class\UserSettings.cs" />
+    <Compile Include="Control\EditDiscipline.xaml.cs">
+      <DependentUpon>EditDiscipline.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\EditGroupDiscipline.xaml.cs">
+      <DependentUpon>EditGroupDiscipline.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\EditPermissionStudent.xaml.cs">
+      <DependentUpon>EditPermissionStudent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\EditPermissionTeacher.xaml.cs">
+      <DependentUpon>EditPermissionTeacher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\RaspisaniePage.xaml.cs">
+      <DependentUpon>RaspisaniePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\RaspisaniePageSection.xaml.cs">
+      <DependentUpon>RaspisaniePageSection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\SignUpControl.xaml.cs">
+      <DependentUpon>SignUpControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="Control\ChatMessageControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\EditDiscipline.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\EditGroupDiscipline.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\EditPermissionStudent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\EditPermissionTeacher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\RaspisaniePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\RaspisaniePageSection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -284,6 +333,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Control\SignUpControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Control\ObjectControl.xaml.cs">
@@ -306,7 +359,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -316,6 +368,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\c.png" />
+    <Resource Include="Image\o.png" />
+    <Resource Include="Image\p.png" />
+    <Resource Include="Image\r.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\minus.png" />
+    <Resource Include="Image\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\f.png" />
+    <Resource Include="Image\s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\edit.png" />
+    <Resource Include="Image\trash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.3.0\build\Fody.targets" Condition="Exists('..\packages\Fody.6.3.0\build\Fody.targets')" />

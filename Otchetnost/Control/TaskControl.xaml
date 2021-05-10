@@ -5,23 +5,42 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Otchetnost"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="700" d:DesignWidth="1200">
     <Grid>
-        <StackPanel Margin="0,15,0,15" Orientation="Horizontal">
-            <Image x:Name="ImageTaskStatus" Margin="5,0,5,0"/>
-            <TextBlock x:Name="TaskStatus" Margin="5,0,5,0" MouseDown="TaskStatus_MouseDown">Yep/No</TextBlock>
-            <StackPanel Orientation="Vertical">
-                <TextBlock x:Name="TaskTextInfo" FontSize="10" Margin="5,0,5,0 ">TaskText</TextBlock>
-                <TextBlock x:Name="TaskText" Margin="5,0,5,0">TextLaba</TextBlock>
+        <StackPanel Height="38" Orientation="Horizontal"  x:Name="NormalView">
+            <StackPanel Orientation="Vertical" x:Name="TaskStatus" Width="40">
+                <Image Margin="10,10,0,0"  MouseDown="TaskStatus_MouseDown" x:Name="TaskStatusImage" Height="20" Width="20"/>
             </StackPanel>
-            <StackPanel Orientation="Vertical">
-                <TextBlock x:Name="TaskDateInfo" FontSize="10" Margin="5,0,5,0 ">DateAdded</TextBlock>
-                <TextBlock x:Name="TaskDate" Margin="5,0,5,0">DateAdd</TextBlock>
+
+            <StackPanel Orientation="Vertical" Width="610">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Height="38">
+                    <TextBlock VerticalAlignment="Center" x:Name="TaskText" TextWrapping="Wrap" Margin="5,0,5,0">TextLaba</TextBlock>
+                </ScrollViewer>
             </StackPanel>
-            <StackPanel Orientation="Vertical">
-                <TextBlock x:Name="TaskDeadLineInfo" FontSize="10" Margin="5,0,5,0 ">DeadLine</TextBlock>
-                <TextBlock x:Name="TaskDeadLine" Margin="5,0,5,0">Deadline</TextBlock>
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <StackPanel VerticalAlignment="Center"  Orientation="Vertical" Height="34">
+                    <TextBlock TextAlignment="Right" x:Name="TaskDeadLineInfo" Width="65" FontSize="12" Margin="5,0,5,0 ">DeadLine</TextBlock>
+                    <TextBlock TextAlignment="Right" x:Name="TaskDateInfo" Width="65" FontSize="12" Margin="5,0,5,0 ">DateAdded</TextBlock>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Center"  Orientation="Vertical" Height="34">
+                    <TextBlock VerticalAlignment="Center" TextAlignment="Right" x:Name="TaskDeadLine" FontSize="11" Margin="5,0,5,0">Deadline</TextBlock>
+                    <TextBlock VerticalAlignment="Center" TextAlignment="Center" x:Name="TaskDate" FontSize="11" Margin="5,0,5,0" >Added</TextBlock>
+                </StackPanel>
             </StackPanel>
+
+            <Image Margin="5,0,0,0" Height="20" Width="20" Source="/Image/edit.png"  MouseDown="EditTask_MouseDown" ></Image>
+        </StackPanel>
+
+        <StackPanel Height="38" Orientation="Horizontal"  x:Name="EditView" Visibility="Collapsed">
+            <StackPanel Orientation="Vertical" Width="610">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Height="38">
+                    <TextBox VerticalAlignment="Center" x:Name="TaskTextEdit" TextWrapping="Wrap" Margin="5,0,5,0">TextLaba</TextBox>
+                </ScrollViewer>
+            </StackPanel>
+            <Image Margin="5,0,0,0" Height="20" Width="20" Source="/Image/plus.png" MouseDown="EditTaskAccept_MouseDown"></Image>
+            <Image Margin="5,0,0,0" Height="20" Width="20" Source="/Image/minus.png"  MouseDown="EditTaskDecline_MouseDown"></Image>
+            <Image Margin="5,0,0,0" Height="20" Width="20" Source="/Image/trash.png"  MouseDown="EditTaskDelete_MouseDown"></Image>
         </StackPanel>
     </Grid>
 </UserControl>
