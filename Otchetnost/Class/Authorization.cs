@@ -36,7 +36,7 @@ namespace Otchetnost
             if (jsonObj["login"] != string.Empty)
             {
                 int type = SQL.Select<int, dynamic>(sqlSelectUserType, new { login = jsonObj["login"] }, SQL.CONNECTION_STRING)[0];
-
+                int ff = SQL.Select<int, dynamic>("SELECT COUNT(*) FROM users u WHERE u.login = @sql_login", new { sql_login = jsonObj["login"] }, SQL.CONNECTION_STRING)[0]; if(ff == 0) { return false; }
                 switch (type)
                 {
                     case 0:
