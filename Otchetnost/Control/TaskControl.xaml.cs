@@ -23,14 +23,14 @@ namespace Otchetnost
             InitComponent();
         }
 
-        public TaskControl(int id, int status, string text, string date, string deadline, bool permission = true)
+        public TaskControl(int id, int status, string text, string date, string deadline)
         {
             InitializeComponent();
             InitComponent();
 
-            if(permission)
+            if(MainWindow.user.GetType().Name == "Student")
             {
-
+                ed.Visibility = Visibility.Collapsed;
             }
 
             //TaskStatus.Visibility = Visibility.Collapsed;
@@ -161,7 +161,7 @@ namespace Otchetnost
             if(new ControlVerification().EditTaskVerification(TaskTextEdit.Text))
             {
                 TaskText.Text = TaskTextEdit.Text;
-                SQL.Insert<dynamic>("UPDATE tasks t SET t.text = @sql_text WHERE t.id = @sql_id;", new { sql_text = TaskTextEdit.Text, sql_id = Convert.ToInt32(Tag)}, SQL.CONNECTION_STRING);
+                SQL.Insert<dynamic>("UPDATE tasks t SET t.text = @sql_text WHERE t.id = @sql_id;", new { sql_text = (TaskTextEdit.Text).ToString(), sql_id = Convert.ToInt32(Tag)}, SQL.CONNECTION_STRING);
             }
            
             NormalView.Visibility = Visibility.Visible;
@@ -178,9 +178,9 @@ namespace Otchetnost
 
         private void EditTaskDelete_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            //SQL.Insert<dynamic>(new EditInfo().sql_DeleteDiscipine, new { sql_id = discipline.discipline_id }, SQL.CONNECTION_STRING);
+            SQL.Insert<dynamic>(new EditInfo().sql_DeleteDiscipine, new { sql_id = Convert.ToInt32(Tag) }, SQL.CONNECTION_STRING);
 
-            //DisciplineControl.Visibility = Visibility.Collapsed;
+            gg.Visibility = Visibility.Collapsed;
         }
     }
 }

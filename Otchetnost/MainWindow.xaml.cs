@@ -144,6 +144,7 @@ namespace Otchetnost
                     TaskSettings.Visibility = Visibility.Collapsed;
                     AddTasks.Visibility = Visibility.Collapsed;
                     discipline = new Tasks().GetDisciplineStudent(((Student)user).group_id);
+                    fff.Visibility = Visibility.Collapsed;
 
                     foreach (var item in discipline)
                     {
@@ -322,7 +323,7 @@ namespace Otchetnost
             ObjectsPanel.Children.Clear();
             now_group_id = Convert.ToInt32(ci.Tag);
 
-            var discipline = new Tasks().GetDisciplineStudent(Convert.ToInt32(ci.Tag), user.id);
+            var discipline = new Tasks().GetDisciplineStudent(Convert.ToInt32(ci.Tag), ((Teacher)user).teacher_id);
             var student = new Tasks().GetAllStudent(Convert.ToInt32(ci.Tag));
 
             foreach (var item in discipline)
@@ -451,18 +452,31 @@ namespace Otchetnost
 
         public void LoadScheduleSection()
         {
-            var group = SQL.Select<Group, dynamic>(new EditInfo().sql_SelectGroup, new { }, SQL.CONNECTION_STRING);
-
-            ComboBoxItem cis = new ComboBoxItem();
-            ScheduleGroupBox.SelectionChanged += ScheduleGroupBox_SelectionChanged;
-
-            foreach (var item in group)
+            if (user.GetType().Name == "Student")
             {
-                cis = new ComboBoxItem();
-                cis.Content = (item.courseName + "-" + item.course + item.group).ToString();
-                cis.Tag = item.id;
+                string gr = (((Student)user).courseName + '-' + ((Student)user).course + ((Student)user).group).ToString();
+                ScheduleGroupBox.Visibility = Visibility.Collapsed;
+                for (int i = 0; i < 6; i++)
+                {
+                    if (i < 3) SchedUpper.Children.Add(new RaspisaniePage(SQL.Select<Schedule, dynamic>(new SqlSchedule().sql_SelectScheduleDay, new { sql_group = gr, sql_date = i }, SQL.CONNECTION_STRING_IATU), i));
+                    else SchedLower.Children.Add(new RaspisaniePage(SQL.Select<Schedule, dynamic>(new SqlSchedule().sql_SelectScheduleDay, new { sql_group = gr, sql_date = i }, SQL.CONNECTION_STRING_IATU), i));
+                }
+            }
+            else
+            {
+                var group = SQL.Select<Group, dynamic>(new EditInfo().sql_SelectGroup, new { }, SQL.CONNECTION_STRING);
 
-                ScheduleGroupBox.Items.Add(cis);
+                ComboBoxItem cis = new ComboBoxItem();
+                ScheduleGroupBox.SelectionChanged += ScheduleGroupBox_SelectionChanged;
+
+                foreach (var item in group)
+                {
+                    cis = new ComboBoxItem();
+                    cis.Content = (item.courseName + "-" + item.course + item.group).ToString();
+                    cis.Tag = item.id;
+
+                    ScheduleGroupBox.Items.Add(cis);
+                }
             }
         }
 

@@ -32,9 +32,9 @@ namespace Otchetnost
 
         public void SignInCheck(object sender, MouseButtonEventArgs e)
         {
-            if (SignInCheckLogin())
+            if (SignUpCheckLogin(login_tb.Text))
             {
-                if (SignInCheckPassword())
+                if (SignUpCheckPassword(password_tb.Password, passwordConfirm_tb.Password))
                 {
                     string json = File.ReadAllText("userconfig.json");
                     dynamic jsonObj = JsonConvert.DeserializeObject(json);
@@ -72,15 +72,21 @@ namespace Otchetnost
         }
 
 
-        public bool SignInCheckLogin()
+        public bool SignUpCheckLogin(string txt)
         {
-            if (login_tb.Text == string.Empty || login_tb.Text.Length < 5 || login_tb.Text.Length > 15 || SQL.Select<int, dynamic>(sql_SignUpLogin, new { @sql_login = login_tb.Text }, SQL.CONNECTION_STRING)[0] != 0) return false;
+            if (txt == string.Empty 
+                || txt.Length < 5 
+                || txt.Length > 15 
+                || SQL.Select<int, dynamic>(sql_SignUpLogin, new { @sql_login = txt }, SQL.CONNECTION_STRING)[0] != 0) return false;
             else return true;
         }
 
-        public bool SignInCheckPassword()
+        public bool SignUpCheckPassword(string txt1, string txt2)
         {
-            if (login_tb.Text == string.Empty || login_tb.Text.Length < 5 || login_tb.Text.Length > 15 || passwordConfirm_tb.Password != passwordConfirm_tb.Password) return false;
+            if (txt1 == string.Empty 
+                || txt1.Length < 5 
+                || txt1.Length > 15 
+                || txt1 != txt2) return false;
             else return true;
         }
 
