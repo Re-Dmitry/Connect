@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Otchetnost"
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="1200">
-    <Grid>
+    <Grid x:Name="gg">
         <StackPanel Height="38" Orientation="Horizontal"  x:Name="NormalView">
             <StackPanel Orientation="Vertical" x:Name="TaskStatus" Width="40">
                 <Image Margin="10,10,0,0"  MouseDown="TaskStatus_MouseDown" x:Name="TaskStatusImage" Height="20" Width="20"/>
@@ -29,7 +29,7 @@
                 </StackPanel>
             </StackPanel>
 
-            <Image Margin="5,0,0,0" Height="20" Width="20" Source="/Image/edit.png"  MouseDown="EditTask_MouseDown" ></Image>
+            <Image x:Name="ed" Margin="5,0,0,0" Height="20" Width="20" Source="/Image/edit.png"  MouseDown="EditTask_MouseDown" ></Image>
         </StackPanel>
 
         <StackPanel Height="38" Orientation="Horizontal"  x:Name="EditView" Visibility="Collapsed">

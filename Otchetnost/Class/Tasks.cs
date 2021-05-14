@@ -15,7 +15,6 @@ namespace Otchetnost
         public string text { get; set; }
         public string date { get; set; }
         public string deadline { get; set; }
-        public int local_complete { get; set; }
         public int global_complete { get; set; }
         public string last_update { get; set; }
     }
@@ -24,7 +23,6 @@ namespace Otchetnost
     {
         public string extend_text { get; set; }
         public string link { get; set; }
-        public string img { get; set; }
     }
 
     public class Discipline
@@ -37,7 +35,7 @@ namespace Otchetnost
 
     public class Tasks
     {
-        string sql_SelectTask = "SELECT t.id, t.group_id,t.discipline_id, t.`text`,  DATE(t.`date`) date, DATE(t.deadline) deadline , tus.local_complete, tus.global_complete, tus.last_update, ti.`text` AS extend_text, ti.link, ti.img FROM tasks AS t  " +
+        string sql_SelectTask = "SELECT t.id, t.group_id,t.discipline_id, t.`text`,  DATE(t.`date`) date, DATE(t.deadline) deadline, tus.global_complete, tus.last_update, ti.`text` AS extend_text, ti.link FROM tasks AS t  " +
                                 "left JOIN task_user_status AS tus ON tus.task_id = t.id                                                                                                                                       " +
                                 "left JOIN task_information AS ti ON ti.task_id= t.id                                                                                                                                          " +
                                 "WHERE t.group_id = @sql_group_id && tus.user_id = @sql_user_id && t.discipline_id = @sql_discipline_id;                                                                                       ";
@@ -58,11 +56,11 @@ namespace Otchetnost
                                    "JOIN `course` AS c ON c.id = g.course_id                                                                                         " +
                                    "WHERE ug.group_id = @sql_group_id;                                                                                               ";
 
-        string sql_SelectPrevTask = "SELECT sum(tus.global_complete) AS count_complete, t.id, t.group_id,t.discipline_id, t.`text`, t.`date`,t.deadline, ti.`text` AS extend_text, ti.link, ti.img FROM tasks AS t  " +
+        string sql_SelectPrevTask = "SELECT sum(tus.global_complete) AS count_complete, t.id, t.group_id,t.discipline_id, t.`text`, t.`date`,t.deadline, ti.`text` AS extend_text, ti.link FROM tasks AS t  " +
                                     "left JOIN task_user_status AS tus ON t.id = tus.task_id                                                                                                                        " +
                                     "left JOIN task_information AS ti ON t.id = ti.task_id                                                                                                                          " +
                                     "WHERE t.group_id = @sql_group_id && t.discipline_id = @sql_discipline_id                                                                                                       " +
-                                    "GROUP BY t.id, extend_text, link, img;                                                                                                                                         ";
+                                    "GROUP BY t.id, extend_text, link;                                                                                                                                         ";
 
         string sql_SelectCountUser = "SELECT COUNT(ug.user_id) AS count_user FROM user_group AS ug " +
                                      "WHERE ug.group_id = @sql_group_id;                            ";

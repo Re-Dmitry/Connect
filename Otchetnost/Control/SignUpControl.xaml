@@ -8,18 +8,18 @@
              d:DesignHeight="700" d:DesignWidth="1200">
     <Grid x:Name="suc">
         <StackPanel Margin="474,250" VerticalAlignment="Center">
-            <TextBlock x:Name="login_txt" Height="20"><Run Text="Login"/></TextBlock>
+            <TextBlock x:Name="login_txt" Height="20"><Run Text="Логин"/></TextBlock>
             <TextBox x:Name="login_tb" Height="20" TextChanged="login_tb_TextChanged"/>
 
-            <TextBlock x:Name="password_txt"><Run Text="Password"/></TextBlock>
+            <TextBlock x:Name="password_txt"><Run Text="Пароль"/></TextBlock>
             <PasswordBox x:Name="password_tb" Height="20"></PasswordBox>
 
-            <TextBlock x:Name="passwordConfirm_txt"><Run Text="Confirm Password"/></TextBlock>
+            <TextBlock x:Name="passwordConfirm_txt"><Run Text="Подтвердите пароль"/></TextBlock>
             <PasswordBox  x:Name="passwordConfirm_tb" Height="20"></PasswordBox>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock x:Name="signin" MouseDown="SignInCheck" Margin="0,0,120,0"><Run Text="SignUp"/></TextBlock>
-                <TextBlock x:Name="ik" MouseDown="ik_MouseDown"><Run Text="I have an account"/></TextBlock>
+                <TextBlock x:Name="signin" MouseDown="SignInCheck" Margin="0,0,25,0"><Run Text="Зарегистрироваться"/></TextBlock>
+                <TextBlock x:Name="ik" MouseDown="ik_MouseDown"><Run Text="У меня есть аккаунт"/></TextBlock>
             </StackPanel>
             
         </StackPanel>

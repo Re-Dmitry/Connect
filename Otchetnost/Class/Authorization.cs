@@ -22,7 +22,7 @@ namespace Otchetnost
                                               "JOIN `course` AS c ON c.id = g.course_id " +
                                               "WHERE login = @sql_login";
 
-            string sqlSelectTeacherSettings = "SELECT u.id, u.login,u.password,u.img, t.fio, t.id AS teacher_id FROM `users` AS u  " +
+            string sqlSelectTeacherSettings = "SELECT u.id, t.id teacher_id, u.login,u.password,u.img, t.fio, t.id AS teacher_id FROM `users` AS u  " +
                                               "JOIN teacher AS t ON t.user_id = u.id                                               " +
                                               "WHERE login = @sql_login                                                            ";
 
@@ -44,7 +44,7 @@ namespace Otchetnost
                         break;
                     case 1:
                         us = SQL.Select<Teacher, dynamic>(sqlSelectTeacherSettings, new { sql_login = jsonObj["login"] }, SQL.CONNECTION_STRING)[0];
-                        ((Teacher)us).groups = SQL.Select<Group, dynamic>(sqlSelectTeacherGroup, new { sql_teacher_id = us.id }, SQL.CONNECTION_STRING);
+                        ((Teacher)us).groups = SQL.Select<Group, dynamic>(sqlSelectTeacherGroup, new { sql_teacher_id = ((Teacher)us).teacher_id }, SQL.CONNECTION_STRING);
                         break;
                     case 2:
                         us = SQL.Select<Admin, dynamic>(sqlSelectTeacherSettings, new { sql_login = jsonObj["login"] }, SQL.CONNECTION_STRING)[0];

@@ -4,38 +4,67 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using System.Windows.Controls;
 
 namespace UnitTest
 {
     public class UnitX
     {
         [Fact]
-        public void AuthorizationUser_Successfull()
+        public void SignInCheckLogin_Test()
         {
             // arrange
-            Otchetnost.UserSettings us = new Otchetnost.UserSettings();
-            string json = " { 'login': 'evvvai', 'password': 'gg'}";
+            string login = "yayaya";
+            bool expected = true;
 
             // act
-            bool res = new Otchetnost.Authorization().Auh(ref us, json);
+            bool res = new Otchetnost.SignUpControl().SignUpCheckLogin(login);
 
             // assert
             Assert.True(res);
         }
 
         [Fact]
-        public void AuthorizationAdmin_Successfull()
+        public void SignInCheckPassword_Test()
         {
             // arrange
-            Otchetnost.UserSettings us = new Otchetnost.UserSettings();
-            string json = " { 'login': 'evvvai', 'password': 'gg'}";
-            var expected = "Admin";
+            string password = "123456";
+            bool expected = true;
 
             // act
-            new Otchetnost.Authorization().Auh(ref us, json);
+            bool res = new Otchetnost.SignUpControl().SignInCheckPassword(password);
 
             // assert
-            Assert.Equal(us.GetType().Name, expected);
+            Assert.Equal(res, expected);
+        }
+
+        [Fact]
+        public void SignUpCheckLogin_Test()
+        {
+            // arrange
+            string login = "yayaya";
+            bool expected = true;
+
+            // act
+            bool res = new Otchetnost.SignUpControl().SignUpCheckLogin(login);
+
+            // assert
+            Assert.True(res);
+        }
+
+        [Fact]
+        public void SignUpCheckPassword_Test()
+        {
+            // arrange
+            string password = "123456";
+            string passwordConfirn = "123456";
+            bool expected = true;
+
+            // act
+            bool res = new Otchetnost.SignUpControl().SignUpCheckPassword(password, passwordConfirn);
+
+            // assert
+            Assert.Equal(res, expected);
         }
 
         [Fact]
@@ -48,7 +77,7 @@ namespace UnitTest
             var res = new Otchetnost.Profile().GetCourses();
 
             // assert
-            Assert.True(res.Count>expected);
+            Assert.True(res.Count > expected);
         }
 
         [Fact]
@@ -76,5 +105,6 @@ namespace UnitTest
             // assert
             Assert.Equal(expected, res);
         }
+
     }
 }

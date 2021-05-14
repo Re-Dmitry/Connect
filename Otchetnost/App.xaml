@@ -525,7 +525,7 @@
 
         <Style TargetType="{x:Type TabItem}">
             <Setter Property="Background" Value="Transparent" />
-            <Setter Property="Foreground" Value="#969696" />
+            <Setter Property="Foreground" Value="#966696" />
 
             <Setter Property="Template">
                 <Setter.Value>
@@ -590,7 +590,7 @@
                           Grid.Row="1">
                                 <Border 
                                     BorderBrush="AliceBlue" 
-                                    Background="AliceBlue"
+                                    Background="#EDEDF6"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="5">
                                     <ContentPresenter 
