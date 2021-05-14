@@ -45,6 +45,15 @@ namespace Otchetnost
                                       "left JOIN teacher AS t ON t.id = gd.teacher_id                        " +
                                       "WHERE gd.group_id = @sql_group_id && gd.teacher_id = @sql_teacher_id; ";
 
+        string sql_SelectDisciplineAll = "SELECT gd.discipline_id, d.name, t.fio FROM group_discipline AS gd    " +
+                              "left JOIN disciplines AS d ON d.id = gd.discipline_id                 " +
+                              "left JOIN teacher AS t ON t.id = gd.teacher_id                        " +
+                              "WHERE gd.group_id = @sql_group_id;";
+
+
+
+
+
         string sql_SelectDisciplineStudent = "SELECT gd.discipline_id, d.name, t.fio FROM group_discipline AS gd    " +
                                              "left JOIN disciplines AS d ON d.id = gd.discipline_id                 " +
                                              "left JOIN teacher AS t ON t.id = gd.teacher_id                        " +
@@ -108,8 +117,16 @@ namespace Otchetnost
 
         public List<Discipline> GetDisciplineStudent(int group_id, int teacher_id)
         {
-            var discipline = SQL.Select<Discipline, dynamic>(sql_SelectDiscipline, new { sql_group_id = group_id, sql_teacher_id = teacher_id}, SQL.CONNECTION_STRING);
-            return discipline;
+            if(teacher_id == -1)
+            {
+                var discipline = SQL.Select<Discipline, dynamic>(sql_SelectDisciplineAll, new { sql_group_id = group_id }, SQL.CONNECTION_STRING);
+                return discipline;
+            }
+            else
+            {
+                var discipline = SQL.Select<Discipline, dynamic>(sql_SelectDiscipline, new { sql_group_id = group_id, sql_teacher_id = teacher_id }, SQL.CONNECTION_STRING);
+                return discipline;
+            }
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

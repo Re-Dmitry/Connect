@@ -32,6 +32,8 @@ namespace Otchetnost
                                            "WHERE gd.teacher_id = @sql_teacher_id                                                 " +
                                            "GROUP BY g.id;                                                                        ";
 
+             string sqlSelectAdminSettings = "SELECT u.id, u.login,u.password FROM users AS u " +
+                                               "WHERE login = @sql_login";
 
             if (jsonObj["login"] != string.Empty)
             {
@@ -47,7 +49,7 @@ namespace Otchetnost
                         ((Teacher)us).groups = SQL.Select<Group, dynamic>(sqlSelectTeacherGroup, new { sql_teacher_id = ((Teacher)us).teacher_id }, SQL.CONNECTION_STRING);
                         break;
                     case 2:
-                        us = SQL.Select<Admin, dynamic>(sqlSelectTeacherSettings, new { sql_login = jsonObj["login"] }, SQL.CONNECTION_STRING)[0];
+                        us = SQL.Select<Admin, dynamic>(sqlSelectAdminSettings, new { sql_login = jsonObj["login"] }, SQL.CONNECTION_STRING)[0];
                         break;
                     default:
                         return false;

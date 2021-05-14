@@ -323,7 +323,17 @@ namespace Otchetnost
             ObjectsPanel.Children.Clear();
             now_group_id = Convert.ToInt32(ci.Tag);
 
-            var discipline = new Tasks().GetDisciplineStudent(Convert.ToInt32(ci.Tag), ((Teacher)user).teacher_id);
+            var discipline = new List<Discipline>();
+
+            if (user.GetType().Name == "Admin")
+            {
+                discipline = new Tasks().GetDisciplineStudent(Convert.ToInt32(ci.Tag), -1);
+            }
+            else
+            {
+                discipline = new Tasks().GetDisciplineStudent(Convert.ToInt32(ci.Tag), ((Teacher)user).teacher_id);
+            }
+
             var student = new Tasks().GetAllStudent(Convert.ToInt32(ci.Tag));
 
             foreach (var item in discipline)
